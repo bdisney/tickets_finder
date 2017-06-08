@@ -34,7 +34,7 @@ class RoutesController < ApplicationController
   end
 
   def destroy
-    @train.destroy
+    @route.destroy
     redirect_to routes_url, notice: 'Route was successfully destroyed.'
   end
 
