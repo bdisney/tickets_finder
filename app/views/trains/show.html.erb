@@ -8,7 +8,11 @@
 </p>
 <p>
   <strong>Маршрут:</strong>
-  <%= @train.route.title %>
+  <% if @train.route.present?  %>
+    <%= @train.route.title %>
+  <% else %>
+    Не назначен.
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |

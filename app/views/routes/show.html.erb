@@ -19,12 +19,14 @@
 </p>
 <p>
   <strong>Поезда на маршруте:</strong>
-  <% if @route.trains %>
+  <% if @route.trains.present? %>
     <% @route.trains.each do |train|  %>
       <ul>
         <li><%= train.number %></li>
       </ul>
     <% end %>
+  <% else %>
+      Поездов на маршруте нет.
   <% end %>
 </p>
 
