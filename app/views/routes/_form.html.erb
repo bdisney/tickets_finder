@@ -2,11 +2,17 @@
     <%= render 'shared/errors_messages', resource: route %>
 
     <div class="field">
-      <%= f.label :title %>
+      <%= f.label :title, 'Наименование:' %>
       <%= f.text_field :title %>
     </div>
 
+    <div>
+      <%= f.label :railway_stations, 'Станции:' %>
+      <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {},
+                              {multiple: true, class: "form-control" } %>
+    </div>
+    <br>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "#{ route.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-default" %>
     </div>
 <% end %>
