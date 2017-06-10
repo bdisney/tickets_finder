@@ -29,7 +29,8 @@
     </neader>
     <main>
       <div class="container">
-        <%= yield %>
+          <%= render 'shared/flash_notices' %>
+          <%= yield %>
       </div>
     </main>
   </body>
