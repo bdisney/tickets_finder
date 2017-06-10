@@ -5,9 +5,7 @@
 
 <p>
   <strong>Станции в маршруте: </strong>
-</p>
-<p>
-  <% if @route.railway_stations %>
+  <% if @route.railway_stations.present? %>
       <% @route.railway_stations.each do |station| %>
         <ul>
           <li><%= station.title %></li>
@@ -26,7 +24,7 @@
       </ul>
     <% end %>
   <% else %>
-      Поездов на маршруте нет.
+    Поездов на маршруте нет.
   <% end %>
 </p>
 
