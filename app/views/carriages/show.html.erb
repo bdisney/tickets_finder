@@ -1,0 +1,18 @@
+<p>
+  <strong>Вагон:</strong>
+  <%= @carriage.variation %>
+</p>
+
+<p>
+  <strong>Относится к поезду: </strong>
+  <% if @carriage.train.present? %>
+      <%= @carriage.train.number %>
+  <% else %>
+    вагон не добавлен к поезду.
+<% end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_carriage_path(@carriage) %> |
+<%= link_to 'Back', carriages_path %>
