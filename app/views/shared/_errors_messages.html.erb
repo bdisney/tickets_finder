@@ -1,0 +1,9 @@
+<div data-alert class="alert-box">
+    <script type="text/javascript">
+        <% if resource.errors.any? %>
+            <% resource.errors.full_messages.each do |msg| %>
+                toastr.error('<%= msg %>')
+            <% end %>
+        <% end %>
+    </script>
+</div>

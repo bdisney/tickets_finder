@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Trains</h1>
 
 <table>
@@ -11,14 +9,7 @@
   </thead>
 
   <tbody>
-    <% @trains.each do |train| %>
-      <tr>
-        <td><%= train.number %></td>
-        <td><%= link_to 'Show', train %></td>
-        <td><%= link_to 'Edit', edit_train_path(train) %></td>
-        <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render @trains %>
   </tbody>
 </table>
 
