@@ -15,5 +15,45 @@
   <% end %>
 </p>
 
+<% if @train.carriages.present? %>
+    <p>
+      <strong>Вагонов: <%= @train.carriages.count %></strong>
+      ( <% @train.carriages_count_by_type.each do |key, value| %>
+        <%= Carriage::VARIATIONS[key.to_sym] %>: <%= value %>
+      <% end %> )
+    </p>
+
+    <table class="table">
+      <thead>
+        <th>Номер вагона</th>
+        <th>Тип вагона</th>
+        <th>Кол-во верхних мест</th>
+        <th>Кол-во нижних мест</th>
+      </thead>
+      <tbody>
+        <% @train.carriages.each.with_index(1) do |carriage, index| %>
+          <tr>
+            <td><%= index %></td>
+            <td><%= Carriage::VARIATIONS[carriage.variation.to_sym] %></td>
+            <td><%= carriage.top_seats %></td>
+            <td><%= carriage.bottom_seats %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="4"></td>
+        </tr>
+          <tr>
+            <td rowspan="2">Всего мест в поезде по типу вагонов: </td>
+            <% Carriage::VARIATIONS.each_key do |type| %>
+              <td><%= Carriage::VARIATIONS[type] %></td>
+              <% Carriage::SEATS.each_key do |seat_type| %>
+                <td><%= @train.seats_count_by_type(type, seat_type) %></td>
+              <% end %>
+          </tr>
+            <%end %>
+      </tbody>
+    </table>
+<% end %>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
