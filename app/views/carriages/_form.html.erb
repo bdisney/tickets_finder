@@ -10,7 +10,7 @@
 
       <div class="col-md-6">
         <%= f.label :varriation, 'Тип вагона', class: "text-muted" %><br>
-        <%= f.select :variation, Carriage::VARIATIONS.map { |role| [ role[1], role[0] ] }, {},
+        <%= f.select :variation, Carriage::VARIATIONS.map { |type| [ type[1], type[0] ] }, {},
                      class: "form-control" %>
       </div>
     </div>
