@@ -1,0 +1,35 @@
+<%= form_for(carriage) do |f| %>
+    <%= render 'shared/errors_messages', resource: carriage %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :train, 'Выберите поезд', class: "text-muted" %>
+        <%= f.collection_select :train_id, Train.all, :id, :number, {},
+                                class: "form-control" %>
+      </div>
+
+      <div class="col-md-6">
+        <%= f.label :varriation, 'Тип вагона', class: "text-muted" %><br>
+        <%= f.select :variation, Carriage::VARIATIONS.map { |type| [ type[1], type[0] ] }, {},
+                     class: "form-control" %>
+      </div>
+    </div>
+    <br />
+
+    <div class="field">
+      <%= f.label :top_seats, 'Кол-во верхник мест', class: "text-muted" %>
+      <%= f.text_field :top_seats %>
+    </div>
+    <br />
+
+    <div class="field">
+      <%= f.label :bottom_seats, 'Кол-во нижних мест', class: "text-muted" %>
+      <%= f.text_field :bottom_seats %>
+    </div>
+    <br />
+
+    <br />
+    <div class="actions">
+      <%= f.submit "#{ carriage.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-default" %>
+    </div>
+<% end %>
