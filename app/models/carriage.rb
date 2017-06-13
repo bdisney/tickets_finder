@@ -26,6 +26,6 @@ class Carriage < ApplicationRecord
   end
 
   def set_number
-    self.number = train.carriages.present? ? train.carriages.max.number + 1 : 1
+    self.number ||= train.carriages.maximum(:number).to_i + 1
   end
 end
