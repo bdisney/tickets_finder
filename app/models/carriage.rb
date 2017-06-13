@@ -1,6 +1,4 @@
 class Carriage < ApplicationRecord
-  belongs_to :train
-
   TYPES = {
       EconomyCarriage:  'плацкарт',
       CoupeCarriage:    'купе',
@@ -16,11 +14,18 @@ class Carriage < ApplicationRecord
       seats:            'сидячие места'
   }.freeze
 
-  validates :number, presence: true
+  belongs_to :train
+
+  before_validation :set_number
+  validates :number, presence: true, uniqueness: { scope: :train_id }
 
   protected
 
   def self.permitted_params
     [:type, :train_id, :number]
+  end
+
+  def set_number
+    self.number = train.carriages.present? ? train.carriages.max.number + 1 : 1
   end
 end
