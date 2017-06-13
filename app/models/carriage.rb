@@ -15,4 +15,12 @@ class Carriage < ApplicationRecord
       side_bottom_seats: 'нижние боковые места',
       seats:            'сидячие места'
   }.freeze
+
+  validates :number, presence: true
+
+  protected
+
+  def self.permitted_params
+    [:type, :train_id, :number]
+  end
 end
