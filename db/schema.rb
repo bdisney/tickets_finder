@@ -16,11 +16,15 @@ ActiveRecord::Schema.define(version: 20170612124354) do
   enable_extension "plpgsql"
 
   create_table "carriages", force: :cascade do |t|
-    t.string   "variation"
-    t.integer  "top_seats"
-    t.integer  "bottom_seats"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "number"
+    t.integer  "top_seats",         default: 0
+    t.integer  "bottom_seats",      default: 0
+    t.integer  "side_top_seats",    default: 0
+    t.integer  "side_bottom_seats", default: 0
+    t.integer  "seats",             default: 0
+    t.string   "type"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "train_id"
     t.index ["train_id"], name: "index_carriages_on_train_id", using: :btree
   end
