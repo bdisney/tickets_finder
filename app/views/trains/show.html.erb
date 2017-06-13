@@ -19,7 +19,7 @@
     <p>
       <strong>Вагонов: <%= @train.carriages.count %></strong>
       ( <% @train.carriages_count_by_type.each do |key, value| %>
-        <%= Carriage::VARIATIONS[key.to_sym] %>: <%= value %>
+        <%= Carriage::TYPES[key.to_sym] %>: <%= value %>
       <% end %> )
     </p>
 
@@ -31,10 +31,10 @@
         <th>Кол-во нижних мест</th>
       </thead>
       <tbody>
-        <% @train.carriages.each.with_index(1) do |carriage, index| %>
+        <% @train.carriages.each do |carriage| %>
           <tr>
-            <td><%= index %></td>
-            <td><%= Carriage::VARIATIONS[carriage.variation.to_sym] %></td>
+            <td><%= link_to "#{carriage.number}", carriage_path(carriage) %></td>
+            <td><%= Carriage::TYPES[carriage.type.to_sym] %></td>
             <td><%= carriage.top_seats %></td>
             <td><%= carriage.bottom_seats %></td>
           </tr>
@@ -43,9 +43,9 @@
           <td colspan="4"></td>
         </tr>
           <tr>
-            <td rowspan="2">Всего мест в поезде по типу вагонов: </td>
-            <% Carriage::VARIATIONS.each_key do |type| %>
-              <td><%= Carriage::VARIATIONS[type] %></td>
+            <td rowspan="4">Всего мест в поезде по типу вагонов: </td>
+            <% Carriage::TYPES.each_key do |type| %>
+              <td><%= Carriage::TYPES[type] %></td>
               <% Carriage::SEATS.each_key do |seat_type| %>
                 <td><%= @train.seats_count_by_type(type, seat_type) %></td>
               <% end %>
