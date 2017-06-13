@@ -8,10 +8,10 @@ class Train < ApplicationRecord
   validates :number, presence: true
 
   def carriages_count_by_type
-    self.carriages.group(:variation).count
+    self.carriages.group(:type).count
   end
 
   def seats_count_by_type(type, seats_type)
-    self.carriages.where(variation: type).sum(seats_type)
+    self.carriages.where(type: type).sum(seats_type)
   end
 end
