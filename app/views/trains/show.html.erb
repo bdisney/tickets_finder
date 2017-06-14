@@ -30,11 +30,12 @@
         <th colspan="3" class="text-center">Кол-во мест</th>
       </thead>
       <tbody>
-        <% @train.carriages.each do |carriage| %>
+        <% @train.sorted_carriages.each do |carriage| %>
           <tr>
             <td><%= link_to "#{carriage.number}", carriage_path(carriage) %></td>
             <td colspan="3" class="text-center"><%= Carriage::TYPES[carriage.type.to_sym] %></td>
-            <td colspan="3" class="text-center"><%= render "carriages/#{carriage.type.underscore}", carriage: carriage %></td>
+            <td colspan="3" class="text-center"><%= render "carriages/#{carriage.type.underscore}",
+                                                           carriage: carriage %></td>
           </tr>
         <% end %>
         <tr>
