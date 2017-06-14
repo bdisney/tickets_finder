@@ -6,7 +6,7 @@ class RailwayStation < ApplicationRecord
 
   validates :title, presence: true, length: { in: 3..20 }, uniqueness: true
 
-  scope :sorted, -> { includes(:routes).order('railway_stations_routes.position') }
+  scope :sorted, -> { joins(:routes).order('railway_stations_routes.position') }
 
   def relation_with(route)
     @record ||= RailwayStationsRoute.find_by(route: route, railway_station: self)
