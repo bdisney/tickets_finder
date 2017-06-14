@@ -19,6 +19,14 @@ class Carriage < ApplicationRecord
   before_validation :set_number
   validates :number, presence: true, uniqueness: { scope: :train_id }
 
+  def self.types
+    TYPES
+  end
+
+  def self.seats
+    SEATS
+  end
+
   protected
 
   def self.permitted_params

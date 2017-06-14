@@ -19,7 +19,7 @@
     <p>
       <strong>Вагонов: <%= @train.carriages.count %></strong>
       ( <% @train.carriages_count_by_type.each do |key, value| %>
-        <%= Carriage::TYPES[key.to_sym] %>: <%= value %>
+        <%= Carriage.types[key.to_sym] %>: <%= value %>
       <% end %> )
     </p>
 
@@ -33,7 +33,7 @@
         <% @train.sorted_carriages.each do |carriage| %>
           <tr>
             <td><%= link_to "#{carriage.number}", carriage_path(carriage) %></td>
-            <td colspan="3" class="text-center"><%= Carriage::TYPES[carriage.type.to_sym] %></td>
+            <td colspan="3" class="text-center"><%= Carriage.types[carriage.type.to_sym] %></td>
             <td colspan="3" class="text-center"><%= render "carriages/#{carriage.type.underscore}",
                                                            carriage: carriage %></td>
           </tr>
@@ -55,9 +55,9 @@
           </tr>
           <tr>
             <td rowspan="4">Всего мест в поезде: </td>
-            <% Carriage::TYPES.each_key do |type| %>
-              <td><%= Carriage::TYPES[type] %></td>
-              <% Carriage::SEATS.each_key do |seat_type| %>
+            <% Carriage.types.each_key do |type| %>
+              <td><%= Carriage.types[type] %></td>
+              <% Carriage.seats.each_key do |seat_type| %>
                 <td class="text-center"><%= @train.seats_count_by_type(type, seat_type) %></td>
               <% end %>
           </tr>
