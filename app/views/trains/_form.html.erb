@@ -19,6 +19,11 @@
       </div>
     </div>
     <br />
+    <div class="">
+        <%= f.label :order_from_tail, 'Нумерация вагонов с хвоста' %>
+        <%= f.check_box :order_from_end %>
+    </div>
+    <br/>
     <div class="actions">
       <%= f.submit "#{ train.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-default" %>
     </div>
