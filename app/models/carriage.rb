@@ -7,11 +7,11 @@ class Carriage < ApplicationRecord
   }.freeze
 
   SEATS = {
-      top_seats:        'верхние места',
-      bottom_seats:     'нижние места',
-      side_top_seats:   'верхние боковые места',
+      top_seats:         'верхние места',
+      bottom_seats:      'нижние места',
+      side_top_seats:    'верхние боковые места',
       side_bottom_seats: 'нижние боковые места',
-      seats:            'сидячие места'
+      seats:             'сидячие места'
   }.freeze
 
   belongs_to :train
