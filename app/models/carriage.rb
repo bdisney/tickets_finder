@@ -29,10 +29,6 @@ class Carriage < ApplicationRecord
 
   protected
 
-  def self.permitted_params
-    [:type, :train_id, :number]
-  end
-
   def set_number
     self.number ||= train.carriages.maximum(:number).to_i + 1
   end

@@ -16,7 +16,7 @@ class CarriagesController < ApplicationController
   end
 
   def create
-    @carriage = carriage_class.new(carriage_params(carriage_class))
+    @carriage = Carriage.new(carriage_params)
 
     if @carriage.save
       redirect_to carriage_path(@carriage), notice: 'Carriage was successfully created.'
@@ -44,12 +44,14 @@ class CarriagesController < ApplicationController
   def set_carriage
     @carriage = Carriage.find(params[:id])
   end
+  #
+  # def carriage_class
+  #   @carriage_class ||= params[:carriage][:type].constantize
+  # end
 
-  def carriage_class
-    @carriage_class ||= params[:carriage][:type].constantize
-  end
-
-  def carriage_params(carriage_class)
-    params.require(:carriage).permit(carriage_class.permitted_params)
+  def carriage_params
+    params.require(:carriage).permit(:train_id, :top_seats, :bottom_seats,
+                                     :side_top_seats, :side_bottom_seats,
+                                     :seats, :type)
   end
 end

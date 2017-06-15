@@ -10,11 +10,11 @@ class Train < ApplicationRecord
   scope :sorted, -> { order(:number) }
 
   def carriages_count_by_type
-    self.carriages.group(:type).count
+    carriages.group(:type).count
   end
 
   def seats_count_by_type(type, seats_type)
-    self.carriages.where(type: type).sum(seats_type)
+    carriages.where(type: type).sum(seats_type)
   end
 
   def sorted_carriages
