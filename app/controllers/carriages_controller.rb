@@ -44,10 +44,6 @@ class CarriagesController < ApplicationController
   def set_carriage
     @carriage = Carriage.find(params[:id])
   end
-  #
-  # def carriage_class
-  #   @carriage_class ||= params[:carriage][:type].constantize
-  # end
 
   def carriage_params
     params.require(:carriage).permit(:train_id, :top_seats, :bottom_seats,
