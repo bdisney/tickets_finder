@@ -27,7 +27,7 @@ class CarriagesController < ApplicationController
   end
 
   def update
-    if @carriage.update(carriage_params(@carriage.class))
+    if @carriage.update(carriage_params)
       redirect_to carriage_path(@carriage), notice: 'Carriage was successfully updated.'
     else
       render :edit
