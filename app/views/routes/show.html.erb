@@ -6,9 +6,10 @@
 <p>
   <strong>Станции в маршруте: </strong>
   <% if @route.railway_stations.present? %>
-      <% @route.railway_stations.each do |station| %>
+      <% @route.railway_stations.sorted.each do |station| %>
         <ul>
-          <li><%= station.title %></li>
+          <li><%= station.title %>,
+            позиция в маршруте: <%= station.relation_with(@route).position %></li>
         </ul>
       <% end %>
   <% else %>

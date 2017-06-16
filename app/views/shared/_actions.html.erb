@@ -1,0 +1,17 @@
+<td class="text-right">
+  <% if links[:show] %>
+      <%= link_to(links[:show]) do %>
+          <i class="fa fa-eye"></i>&nbsp;
+      <% end %>
+  <% end %>
+  <% if links[:edit] %>
+      <%= link_to(links[:edit]) do %>
+          <span class="text-success"><i class="fa fa-pencil"></i></span>&nbsp;
+      <% end %>
+  <% end %>
+  <% if links[:delete] %>
+      <%= link_to(links[:delete], method: :delete, data: { confirm: "Вы уверены?" }) do %>
+          <span class="text-danger"><i class="fa fa-times"></i></span>
+      <% end %>
+  <% end %>
+</td>

@@ -1,16 +1,20 @@
 <p>
   <strong>Вагон:</strong>
-  <%= @carriage.variation %>
+  <%= @carriage.type %>
 </p>
 
 <p>
-  <strong>Относится к поезду: </strong>
+  <strong>Прикреплен к поезду: </strong>
   <% if @carriage.train.present? %>
       <%= @carriage.train.number %>
   <% else %>
     вагон не добавлен к поезду.
 <% end %>
 </p>
+
+<p><strong>Места в вагоне:</strong></p>
+
+<%= render "#{@carriage.type.underscore}", carriage: @carriage %>
 
 
 

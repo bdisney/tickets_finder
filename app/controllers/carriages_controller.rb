@@ -1,4 +1,11 @@
 class CarriagesController < ApplicationController
+  PERMITTED_PARAMS = {
+      EconomyCarriage:  [:top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats],
+      CoupeCarriage:    [:top_seats, :bottom_seats],
+      SittingCarriage:  [:seats],
+      BusinessCarriage: [:bottom_seats]
+  }.freeze
+
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,15 +26,16 @@ class CarriagesController < ApplicationController
     @carriage = Carriage.new(carriage_params)
 
     if @carriage.save
-      redirect_to @carriage, notice: 'Carriage was successfully created.'
+      redirect_to carriage_path(@carriage), notice: 'Carriage was successfully created.'
     else
       render :new
     end
+
   end
 
   def update
     if @carriage.update(carriage_params)
-      redirect_to @carriage, notice: 'Carriage was successfully updated.'
+      redirect_to carriage_path(@carriage), notice: 'Carriage was successfully updated.'
     else
       render :edit
     end
@@ -39,11 +47,16 @@ class CarriagesController < ApplicationController
   end
 
   private
+
   def set_carriage
     @carriage = Carriage.find(params[:id])
   end
 
   def carriage_params
-    params.require(:carriage).permit(:variation, :top_seats, :bottom_seats, :train_id)
+    params.require(:carriage).permit(permitted_params)
+  end
+
+  def permitted_params
+    PERMITTED_PARAMS[params[:carriage][:type].to_sym].concat([:train_id, :type])
   end
 end
