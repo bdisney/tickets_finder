@@ -6,14 +6,24 @@ class RailwayStation < ApplicationRecord
 
   validates :title, presence: true, length: { in: 3..20 }, uniqueness: true
 
-  scope :sorted, -> { joins(:routes).order('railway_stations_routes.position') }
+  scope :sorted, lambda {
+    select('railway_stations.*, railway_stations_routes.position')
+      .joins(:railway_stations_routes)
+      .order('railway_stations_routes.position').uniq
+  }
 
-  def relation_with(route)
-    @record ||= RailwayStationsRoute.find_by(route: route, railway_station: self)
+  def position_in(route)
+    station_route(route).try(:position)
   end
 
-  def update_current_position(route, position)
-    current_position = relation_with(route)
-    current_position.update(position: position) if current_position
+  def update_position(route, position)
+    station_route = station_route(route)
+    station_route.update(position: position) if station_route
+  end
+
+  protected
+
+  def station_route(route)
+    @station_route ||= RailwayStationsRoute.find_by(route: route, railway_station: self)
   end
 end
