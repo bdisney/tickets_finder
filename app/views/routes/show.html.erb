@@ -4,30 +4,50 @@
 </p>
 
 <p>
+  <strong>Поезда на маршруте:</strong>
+  <% if @route.trains.present? %>
+      <% @route.trains.each do |train|  %>
+        <ul>
+          <li><%= train.number %></li>
+        </ul>
+    <% end %>
+<% else %>
+    Поездов на маршруте нет.
+<% end %>
+</p>
+
+<p>
   <strong>Станции в маршруте: </strong>
   <% if @route.railway_stations.present? %>
-      <% @route.railway_stations.sorted.each do |station| %>
-        <ul>
-          <li><%= station.title %>,
-            позиция в маршруте: <%= station.relation_with(@route).position %></li>
-        </ul>
-      <% end %>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <thead>
+            <th>Станция</th>
+            <th>Позиция</th>
+          </thead>
+          <tbody>
+            <% @route.railway_stations.sorted.each do |station| %>
+              <tr>
+                <td><%= station.title %></td>
+                <td>
+                  <%= form_tag update_position_railway_station_path(station),
+                               method: :patch do %>
+                      <%= number_field_tag :position, station.position_in(@route) %>
+                      <%= hidden_field_tag :route_id, @route.id %>
+                      <%= submit_tag 'Изменить' %>
+                  <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   <% else %>
     Не назначены.
   <% end %>
 </p>
-<p>
-  <strong>Поезда на маршруте:</strong>
-  <% if @route.trains.present? %>
-    <% @route.trains.each do |train|  %>
-      <ul>
-        <li><%= train.number %></li>
-      </ul>
-    <% end %>
-  <% else %>
-    Поездов на маршруте нет.
-  <% end %>
-</p>
+
 
 
 <%= link_to 'Edit', edit_route_path(@route) %> |
