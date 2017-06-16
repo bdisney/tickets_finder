@@ -23,19 +23,27 @@
       <% end %> )
     </p>
 
+    <%= link_to 'Добавить вагон', new_train_carriage_path(@train), class: 'btn btn-default' %>
+
     <table class="table ">
       <thead>
         <th>Номер вагона</th>
         <th colspan="3" class="text-center">Тип вагона</th>
-        <th colspan="3" class="text-center">Кол-во мест</th>
+        <th colspan="2" class="text-center">Кол-во мест</th>
+        <th class="text-right">Actions</th>
       </thead>
       <tbody>
         <% @train.sorted_carriages.each do |carriage| %>
           <tr>
-            <td><%= link_to "#{carriage.number}", carriage_path(carriage) %></td>
+            <td><%= link_to "#{carriage.number}", train_carriage_path(@train, carriage) %></td>
             <td colspan="3" class="text-center"><%= Carriage.types[carriage.type.to_sym] %></td>
-            <td colspan="3" class="text-center"><%= render "carriages/#{carriage.type.underscore}",
+            <td colspan="2" class="text-center"><%= render "carriages/#{carriage.type.underscore}",
                                                            carriage: carriage %></td>
+            <%= render 'shared/actions', links: {
+                show:   train_carriage_path(@train, carriage),
+                edit:   edit_train_carriage_path(@train, carriage),
+                delete: train_carriage_path(@train, carriage)
+            } %>
           </tr>
         <% end %>
         <tr>
