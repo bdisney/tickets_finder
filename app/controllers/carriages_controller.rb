@@ -1,4 +1,11 @@
 class CarriagesController < ApplicationController
+  PERMITTED_PARAMS = {
+      EconomyCarriage:  [:top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats],
+      CoupeCarriage:    [:top_seats, :bottom_seats],
+      SittingCarriage:  [:seats],
+      BusinessCarriage: [:bottom_seats]
+  }.freeze
+
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -46,8 +53,10 @@ class CarriagesController < ApplicationController
   end
 
   def carriage_params
-    params.require(:carriage).permit(:train_id, :top_seats, :bottom_seats,
-                                     :side_top_seats, :side_bottom_seats,
-                                     :seats, :type)
+    params.require(:carriage).permit(permitted_params)
+  end
+
+  def permitted_params
+    PERMITTED_PARAMS[params[:carriage][:type].to_sym].concat([:train_id, :type])
   end
 end
