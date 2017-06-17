@@ -12,13 +12,17 @@ class RailwayStation < ApplicationRecord
       .order('railway_stations_routes.position').uniq
   }
 
-  def position_in(route)
-    station_route(route).try(:position)
+  def check_station_attr(route, attr)
+    value = station_route(route).try(attr)
+    return unless value
+    RailwayStationsRoute.columns_hash[attr.to_s].type.eql?(:time) ? value.strftime("%H:%M") : value
+
   end
 
-  def update_position(route, position)
+  def update_strip_map(route, position, arrival, departure)
     station_route = station_route(route)
-    station_route.update(position: position) if station_route
+    return unless station_route
+    station_route.update(position: position, arrival_time: arrival, departure_time: departure)
   end
 
   protected

@@ -1,5 +1,6 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_position]
+  before_action :set_railway_station,
+                only: [:show, :edit, :update, :destroy, :update_strip_map]
 
   def index
     @railway_stations = RailwayStation.all
@@ -33,10 +34,13 @@ class RailwayStationsController < ApplicationController
     end
   end
 
-  def update_position
+  def update_strip_map
     @route = Route.find(params[:route_id])
-    if @railway_station.update_position(@route, params[:position])
-      redirect_to @route, notice: 'Railway station position was successfully updated.'
+    if @railway_station.update_strip_map(@route,
+                                         params[:position],
+                                         params[:arrival_time],
+                                         params[:departure_time])
+      redirect_to @route, notice: 'Railway station  info was successfully updated.'
     end
   end
 
