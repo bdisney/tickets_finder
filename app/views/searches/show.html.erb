@@ -1,0 +1,51 @@
+<p>Поиск билета:</p>
+
+<%= form_tag search_path, role: 'form'  do %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= label_tag :departure_station, 'Станция отправления' %>
+      <%= select_tag :departure_station,
+                     options_from_collection_for_select(RailwayStation.all, :id, :title),
+                     class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+      <%= label_tag :arrival_station, 'Станция прибытия' %>
+      <%= select_tag :arrival_station,
+                     options_from_collection_for_select(RailwayStation.all, :id, :title),
+                     class: 'form-control' %>
+    </div>
+  </div>
+    <br/>
+  <div class="">
+    <%= submit_tag 'Найти', class: 'btn btn-default' %>
+  </div>
+<% end %>
+
+<% if @trains.present? %>
+    <br/>
+    <p>Результаты поиска:</p>
+    <table class="table">
+      <thead>
+        <th>Номер</th>
+        <th class="text-center">Маршрут</th>
+        <th class="text-center">Станция, <br/> время отправления</th>
+        <th class="text-center">Станция, <br/> время прибытия</th>
+        <th></th>
+      </thead>
+      <tbody>
+      <% @trains.each do |train| %>
+        <td><%= train.number %></td>
+        <td class="text-center"><%= train.route.title %></td>
+        <td class="text-center">
+          <%= @departure_station.title %><br/>
+          <%= @departure_station.check_station_attr(train.route, :departure_time) %>
+        </td>
+        <td class="text-center">
+          <%= @arrival_station.title %><br/>
+          <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
+        </td>
+        <td class="text-right"><%= link_to 'Купить', search_path, class: 'btn btn-default', role: 'button' %></td>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
