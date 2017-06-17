@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614111327) do
+ActiveRecord::Schema.define(version: 20170616161836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170614111327) do
     t.integer "railway_station_id",             null: false
     t.integer "route_id",                       null: false
     t.integer "position",           default: 0
+    t.time    "arrival_time"
+    t.time    "departure_time"
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id", using: :btree
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id", using: :btree
   end
