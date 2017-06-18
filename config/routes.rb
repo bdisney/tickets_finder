@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'railway_stations#index'
+  root 'searches#show'
 
   resources :trains do
     resources :carriages
