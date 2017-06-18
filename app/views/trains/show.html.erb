@@ -15,64 +15,58 @@
   <% end %>
 </p>
 
+<%= link_to 'Добавить вагон', new_train_carriage_path(@train), class: 'btn btn-default btn-sm' %>
+<br/>
 <% if @train.carriages.present? %>
-    <p>
-      <strong>Вагонов: <%= @train.carriages.count %></strong>
-      ( <% @train.carriages_count_by_type.each do |key, value| %>
-        <%= Carriage.types[key.to_sym] %>: <%= value %>
-      <% end %> )
-    </p>
-
-    <%= link_to 'Добавить вагон', new_train_carriage_path(@train), class: 'btn btn-default' %>
-
-    <table class="table ">
-      <thead>
-        <th>Номер вагона</th>
-        <th colspan="3" class="text-center">Тип вагона</th>
-        <th colspan="2" class="text-center">Кол-во мест</th>
-        <th class="text-right">Actions</th>
-      </thead>
-      <tbody>
-        <% @train.sorted_carriages.each do |carriage| %>
-          <tr>
-            <td><%= link_to "#{carriage.number}", train_carriage_path(@train, carriage) %></td>
-            <td colspan="3" class="text-center"><%= Carriage.types[carriage.type.to_sym] %></td>
-            <td colspan="2" class="text-center"><%= render "carriages/#{carriage.type.underscore}",
-                                                           carriage: carriage %></td>
-            <%= render 'shared/actions', links: {
-                show:   train_carriage_path(@train, carriage),
-                edit:   edit_train_carriage_path(@train, carriage),
-                delete: train_carriage_path(@train, carriage)
-            } %>
-          </tr>
-        <% end %>
+  <table class="table ">
+    <thead>
+      <th>Номер вагона</th>
+      <th colspan="3" class="text-center">Тип вагона</th>
+      <th colspan="2" class="text-center">Кол-во мест</th>
+      <th class="text-right">Actions</th>
+    </thead>
+    <tbody>
+      <% @train.sorted_carriages.each do |carriage| %>
         <tr>
-          <td colspan="7"></td>
+          <td><%= link_to "#{carriage.number}", train_carriage_path(@train, carriage) %></td>
+          <td colspan="3" class="text-center"><%= Carriage.types[carriage.type.to_sym] %></td>
+          <td colspan="2" class="text-center"><%= render "carriages/#{carriage.type.underscore}",
+                                                         carriage: carriage %></td>
+          <%= render 'shared/actions', links: {
+              show:   train_carriage_path(@train, carriage),
+              edit:   edit_train_carriage_path(@train, carriage),
+              delete: train_carriage_path(@train, carriage)
+          } %>
         </tr>
-          <tr>
-            <th colspan="2"></th>
-            <th colspan="5" class="text-center">Мест по типу</th>
-          </tr>
-          <tr>
-            <th colspan="2"></th>
-            <th class="text-center">Верхние</th>
-            <th class="text-center">Нижние</th>
-            <th class="text-center">Верхние, сбоку</th>
-            <th class="text-center">Нижние, сбоку</th>
-            <th class="text-center">Сидячие</th>
-          </tr>
-          <tr>
-            <td rowspan="4">Всего мест в поезде: </td>
-            <% Carriage.types.each_key do |type| %>
-              <td><%= Carriage.types[type] %></td>
-              <% Carriage.seats.each_key do |seat_type| %>
-                <td class="text-center"><%= @train.seats_count_by_type(type, seat_type) %></td>
-              <% end %>
-          </tr>
-            <%end %>
-      </tbody>
-    </table>
+      <% end %>
+      <tr>
+        <td colspan="7"></td>
+      </tr>
+        <tr>
+          <th colspan="2"></th>
+          <th colspan="5" class="text-center">Мест по типу</th>
+        </tr>
+        <tr>
+          <th colspan="2"></th>
+          <th class="text-center">Верхние</th>
+          <th class="text-center">Нижние</th>
+          <th class="text-center">Верхние, сбоку</th>
+          <th class="text-center">Нижние, сбоку</th>
+          <th class="text-center">Сидячие</th>
+        </tr>
+        <tr>
+          <td rowspan="4">Всего мест в поезде: </td>
+          <% Carriage.types.each_key do |type| %>
+            <td><%= Carriage.types[type] %></td>
+            <% Carriage.seats.each_key do |seat_type| %>
+              <td class="text-center"><%= @train.seats_count_by_type(type, seat_type) %></td>
+            <% end %>
+        </tr>
+          <%end %>
+    </tbody>
+  </table>
 <% end %>
 
+<br/>
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
