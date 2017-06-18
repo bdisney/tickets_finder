@@ -9,14 +9,14 @@ class RailwayStation < ApplicationRecord
   scope :sorted, lambda {
     select('railway_stations.*, railway_stations_routes.position')
       .joins(:railway_stations_routes)
-      .order('railway_stations_routes.position').uniq
+      .order('railway_stations_routes.position')
+      .uniq
   }
 
   def check_station_attr(route, attr)
     value = station_route(route).try(attr)
     return unless value
     RailwayStationsRoute.columns_hash[attr.to_s].type.eql?(:time) ? value.strftime("%H:%M") : value
-
   end
 
   def update_strip_map(route, position, arrival, departure)
