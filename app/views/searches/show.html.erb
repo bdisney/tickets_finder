@@ -1,4 +1,4 @@
-<p>Поиск билета:</p>
+<h1>Поиск билета:</h1>
 
 <%= form_tag search_path, role: 'form'  do %>
   <div class="row">
@@ -22,30 +22,41 @@
 <% end %>
 
 <% if @trains.present? %>
-    <br/>
-    <p>Результаты поиска:</p>
-    <table class="table">
-      <thead>
-        <th>Номер</th>
-        <th class="text-center">Маршрут</th>
-        <th class="text-center">Станция, <br/> время отправления</th>
-        <th class="text-center">Станция, <br/> время прибытия</th>
-        <th></th>
-      </thead>
-      <tbody>
+  <br/>
+  <p>Результаты поиска:</p>
+
+  <table class="table">
+    <thead>
+      <th>Номер</th>
+      <th class="text-center">Маршрут</th>
+      <th class="text-center">Станция, <br/> время отправления</th>
+      <th class="text-center">Станция, <br/> время прибытия</th>
+      <th></th>
+    </thead>
+    <tbody>
       <% @trains.each do |train| %>
-        <td><%= train.number %></td>
-        <td class="text-center"><%= train.route.title %></td>
-        <td class="text-center">
-          <%= @departure_station.title %><br/>
-          <%= @departure_station.check_station_attr(train.route, :departure_time) %>
-        </td>
-        <td class="text-center">
-          <%= @arrival_station.title %><br/>
-          <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
-        </td>
-        <td class="text-right"><%= link_to 'Купить', search_path, class: 'btn btn-default', role: 'button' %></td>
+        <tr>
+          <td><%= train.number %></td>
+          <td class="text-center"><%= train.route.title %></td>
+          <td class="text-center">
+            <%= @departure_station.title %><br/>
+            <%= @departure_station.check_station_attr(train.route, :departure_time) %>
+          </td>
+          <td class="text-center">
+            <%= @arrival_station.title %><br/>
+            <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
+          </td>
+
+          <td class="text-right">
+            <%= form_tag(purchase_tickets_path) do %>
+              <%= hidden_field_tag :train_id, train.id %>
+              <%= hidden_field_tag :start_station_id, @departure_station.id %>
+              <%= hidden_field_tag :last_station_id, @arrival_station.id %>
+              <%= submit_tag 'Купить', class: 'btn btn-default btn-sm' %>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
-      </tbody>
-    </table>
+    </tbody>
+  </table>
 <% end %>
