@@ -1,0 +1,27 @@
+<h1>Билет</h1>
+
+<div class="">
+  <p><span class="text-muted">ФИО</span>: <%= @ticket.passenger_name %></p>
+  <p><span class="text-muted">Номер паспорта: </span><%= @ticket.passport_number %></p>
+
+  <table class="table">
+    <thead>
+      <th>Поезд</th>
+      <th>Маршрут</th>
+      <th>Отправление</th>
+      <th>Прибытие</th>
+    </thead>
+    <tbody>
+      <td><%= @ticket.train.number %></td>
+      <td><%= @ticket.train.route.title %></td>
+      <td>
+        <%= @departure_station.title %><br/>
+        <%= @departure_station.check_station_attr(@ticket.train.route, :departure_time) %>
+      </td>
+      <td>
+        <%= @arrival_station.title %><br/>
+        <%= @arrival_station.check_station_attr(@ticket.train.route, :arrival_time) %>
+      </td>
+    </tbody>
+  </table>
+</div>
