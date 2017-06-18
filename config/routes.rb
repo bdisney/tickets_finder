@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'railway_stations#index'
+
   resources :trains do
     resources :carriages
   end
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :routes
   resource  :search, only: [:show, :create]
-
-  root 'railway_stations#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :tickets, only: [:show, :create, :destroy] do
+    post :purchase, on: :collection
+  end
 end
