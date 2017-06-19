@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'searches#show'
 
   resources :trains do
