@@ -1,6 +1,6 @@
 <td class="text-right">
   <% if links[:show] %>
-      <%= link_to(links[:show]) do %>
+      <%= link_to(links[:show], :"data-turbolinks" => false) do %>
           <i class="fa fa-eye"></i>&nbsp;
       <% end %>
   <% end %>
