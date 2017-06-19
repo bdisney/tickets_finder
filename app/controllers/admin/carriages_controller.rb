@@ -1,4 +1,4 @@
-class CarriagesController < ApplicationController
+class Admin::CarriagesController < Admin::BaseController
   PERMITTED_PARAMS = {
       EconomyCarriage:  [:top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats],
       CoupeCarriage:    [:top_seats, :bottom_seats],
