@@ -21,6 +21,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div class="nav navbar-nav">
               <li><%= link_to 'Search', search_path %></li>
+              <li><%= link_to 'My tickets', tickets_path %></li>
               <% if user_signed_in? && current_user.admin? %>
                 <li><%= link_to 'Stations', admin_railway_stations_path %></li>
                 <li><%= link_to 'Routes', admin_routes_path %></li>
@@ -29,7 +30,7 @@
             </div>
             <% if user_signed_in? %>
               <p class="navbar-text navbar-right">
-                Signed in as <%= current_user.email %>
+                Signed in as <%= current_user.full_name %>
                 <%= link_to 'Sign out', destroy_user_session_path, method: :delete,
                             class: 'navbar-link' %>
               </p>
