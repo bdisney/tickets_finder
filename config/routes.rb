@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   end
 
   resource  :search, only: [:show, :create]
-  resources :tickets
+  resources :tickets, except: [:edit, :update]
 end
