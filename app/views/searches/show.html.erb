@@ -51,7 +51,7 @@
             <%= link_to 'Купить билет', new_ticket_path(
                 train_id: train.id,
                 start_station_id: @departure_station,
-                last_station_id: @arrival_station) %>
+                last_station_id: @arrival_station), class: 'btn btn-default btn-sm' %>
           </td>
         </tr>
       <% end %>
