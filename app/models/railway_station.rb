@@ -10,19 +10,25 @@ class RailwayStation < ApplicationRecord
     select('railway_stations.*, railway_stations_routes.position')
       .joins(:railway_stations_routes)
       .order('railway_stations_routes.position')
-      .uniq
+      .distinct
   }
 
   def check_station_attr(route, attr)
     value = station_route(route).try(attr)
     return unless value
-    RailwayStationsRoute.columns_hash[attr.to_s].type.eql?(:time) ? value.strftime("%H:%M") : value
+    RailwayStationsRoute.columns_hash[attr.to_s].type.eql?(:time) ? value.strftime('%H:%M') : value
   end
 
-  def update_strip_map(route, position, arrival, departure)
+  def update_position(route, position)
     station_route = station_route(route)
     return unless station_route
-    station_route.update(position: position, arrival_time: arrival, departure_time: departure)
+    station_route.update(position: position)
+  end
+
+  def update_time(route, arrival, departure)
+    station_route = station_route(route)
+    return unless station_route
+    station_route.update(arrival_time: arrival, departure_time: departure)
   end
 
   protected

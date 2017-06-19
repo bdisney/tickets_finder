@@ -24,25 +24,30 @@
         <table class="table">
           <thead>
             <th>Станция</th>
-            <th>Позиция</th>
+            <th colspan="2">Позиция</th>
             <th>Время прибытия</th>
             <th>Время отправления</th>
+            <th></th>
           </thead>
           <tbody>
             <% @route.railway_stations.sorted.each do |station| %>
               <tr>
                 <td><%= station.title %></td>
                 <td>
-                  <%= form_tag update_strip_map_railway_station_path(station),
+                  <%= form_tag update_position_railway_station_path(station),
                                method: :patch do %>
                       <%= number_field_tag :position, station.check_station_attr(@route, :position) %>
-
                       <%= hidden_field_tag :route_id, @route.id %></td>
+                      <td><%= submit_tag 'Изменить' %></td>
+                  <% end %>
+                  <%= form_tag update_time_railway_station_path(station),
+                               method: :patch do %>
 
                       <td><%= time_field_tag :arrival_time,
                                              station.check_station_attr(@route, :arrival_time) %></td>
                       <td><%= time_field_tag :departure_time,
                                              station.check_station_attr(@route, :departure_time) %></td>
+                          <%= hidden_field_tag :route_id, @route.id %>
                       <td><%= submit_tag 'Изменить' %></td>
                   <% end %>
               </tr>

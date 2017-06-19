@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   end
 
   resources :railway_stations do
-    patch :update_strip_map, on: :member
+    patch :update_position, on: :member
+    patch :update_time, on: :member
   end
 
   resources :routes
