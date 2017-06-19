@@ -27,7 +27,7 @@ class Admin::CarriagesController < Admin::BaseController
     @carriage = @train.carriages.new(carriage_params)
 
     if @carriage.save
-      redirect_to train_path(@train), notice: 'Carriage was successfully created.'
+      redirect_to admin_train_path(@train), notice: 'Carriage was successfully created.'
     else
       render :new
     end
@@ -36,7 +36,7 @@ class Admin::CarriagesController < Admin::BaseController
 
   def update
     if @carriage.update(carriage_params)
-      redirect_to train_path(@train), notice: 'Carriage was successfully updated.'
+      redirect_to admin_train_path(@train), notice: 'Carriage was successfully updated.'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class Admin::CarriagesController < Admin::BaseController
 
   def destroy
     @carriage.destroy
-    redirect_to train_path(@carriage.train), notice: 'Carriage was successfully destroyed.'
+    redirect_to admin_train_path(@carriage.train), notice: 'Carriage was successfully destroyed.'
   end
 
   private
