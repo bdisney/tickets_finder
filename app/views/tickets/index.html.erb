@@ -1,0 +1,27 @@
+<h1>Мои билеты</h1>
+
+<% if @tickets.present? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Маршрут</th>
+        <th>Станция отправления</th>
+        <th>Станция прибытия</th>
+        <th colspan="2" class="text-right">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @tickets %>
+    </tbody>
+  </table>
+
+<% else %>
+  <p>вы еще не купили ни одного билета.</p>
+<% end %>
+
+
+<p class="nav-inner">
+  <%= link_to 'Back', root_path %>
+</p>

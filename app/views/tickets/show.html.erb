@@ -1,9 +1,19 @@
 <h1>Билет</h1>
 
 <div class="">
-  <p><span class="text-muted">ФИО</span>: <%= @ticket.passenger_name %></p>
+  <h4>Детали заказа</h4>
+  <p><span class="text-muted">Имя клиента:</span> <%= @ticket.user.full_name %></p>
+  <p>
+    <span class="text-muted">Дата и время покупки билета:</span>
+    <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %>
+  </p>
+  <h4>Сведения о пассажире:</h4>
+  <p>
+    <span class="text-muted">Имя пассажира:</span>
+    <%= @ticket.passenger_name %>
+  </p>
   <p><span class="text-muted">Номер паспорта: </span><%= @ticket.passport_number %></p>
-
+  <br/>
   <table class="table">
     <thead>
       <th>Поезд</th>
@@ -25,3 +35,5 @@
     </tbody>
   </table>
 </div>
+
+<%= link_to 'Back', tickets_path %>
