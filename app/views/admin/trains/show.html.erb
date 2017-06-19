@@ -15,7 +15,7 @@
   <% end %>
 </p>
 
-<%= link_to 'Добавить вагон', new_train_carriage_path(@train), class: 'btn btn-default btn-sm' %>
+<%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train), class: 'btn btn-default btn-sm' %>
 <br/>
 <% if @train.carriages.present? %>
   <table class="table ">
@@ -28,14 +28,14 @@
     <tbody>
       <% @train.sorted_carriages.each do |carriage| %>
         <tr>
-          <td><%= link_to "#{carriage.number}", train_carriage_path(@train, carriage) %></td>
+          <td><%= link_to "#{carriage.number}", admin_train_carriage_path(@train, carriage) %></td>
           <td colspan="3" class="text-center"><%= Carriage.types[carriage.type.to_sym] %></td>
-          <td colspan="2" class="text-center"><%= render "carriages/#{carriage.type.underscore}",
+          <td colspan="2" class="text-center"><%= render "admin/carriages/#{carriage.type.underscore}",
                                                          carriage: carriage %></td>
           <%= render 'shared/actions', links: {
-              show:   train_carriage_path(@train, carriage),
-              edit:   edit_train_carriage_path(@train, carriage),
-              delete: train_carriage_path(@train, carriage)
+              show:   admin_train_carriage_path(@train, carriage),
+              edit:   edit_admin_train_carriage_path(@train, carriage),
+              delete: admin_train_carriage_path(@train, carriage)
           } %>
         </tr>
       <% end %>
@@ -68,5 +68,5 @@
 <% end %>
 
 <br/>
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>
