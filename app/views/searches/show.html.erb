@@ -48,12 +48,10 @@
           </td>
 
           <td class="text-right">
-            <%= form_tag(purchase_tickets_path) do %>
-              <%= hidden_field_tag :train_id, train.id %>
-              <%= hidden_field_tag :start_station_id, @departure_station.id %>
-              <%= hidden_field_tag :last_station_id, @arrival_station.id %>
-              <%= submit_tag 'Купить', class: 'btn btn-default btn-sm' %>
-            <% end %>
+            <%= link_to 'Купить билет', new_ticket_path(
+                train_id: train.id,
+                start_station_id: @departure_station,
+                last_station_id: @arrival_station) %>
           </td>
         </tr>
       <% end %>

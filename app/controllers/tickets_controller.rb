@@ -5,11 +5,11 @@ class TicketsController < ApplicationController
     @arrival_station = RailwayStation.find_by(params[:last_station_id])
   end
 
-  def purchase
+  def new
     @ticket = Ticket.new(
-      train_id: params[:train_id],
-      start_station_id: params[:start_station_id],
-      last_station_id: params[:last_station_id]
+        train_id: params[:train_id],
+        start_station_id: params[:start_station_id],
+        last_station_id: params[:last_station_id]
     )
   end
 
@@ -19,7 +19,7 @@ class TicketsController < ApplicationController
     if @ticket.save
       redirect_to @ticket, notice: 'Ticket was successfully created.'
     else
-      render :purchase
+      render :new
     end
   end
 

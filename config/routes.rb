@@ -12,7 +12,5 @@ Rails.application.routes.draw do
 
   resources :routes
   resource  :search, only: [:show, :create]
-  resources :tickets, only: [:show, :create, :destroy] do
-    post :purchase, on: :collection
-  end
+  resources :tickets
 end
