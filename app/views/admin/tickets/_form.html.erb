@@ -1,16 +1,12 @@
 <%= form_for [:admin, ticket] do |f| %>
     <%= render 'shared/errors_messages', resource: ticket %>
+    <%= f.hidden_field :train_id %>
+    <%= f.hidden_field :start_station_id %>
+    <%= f.hidden_field :last_station_id %>
     <div class="row">
       <div class="col-md-6">
         <%= f.label :users, 'Выберите пользователя' %>
         <%= f.collection_select :user_id, User.all, :id, :email, {}, class: "form-control" %>
-      </div>
-    </div>
-    <br/>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.label :trains, 'Выберите поезд' %>
-        <%= f.collection_select :train_id, Train.all, :id, :number, {}, class: "form-control" %>
       </div>
     </div>
     <br/>
