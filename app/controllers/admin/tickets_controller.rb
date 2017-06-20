@@ -6,7 +6,11 @@ class Admin::TicketsController < Admin::BaseController
   end
 
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.new(
+        train_id: params[:train_id],
+        start_station_id: params[:start_station_id],
+        last_station_id: params[:last_station_id]
+    )
   end
 
   def show
@@ -17,9 +21,6 @@ class Admin::TicketsController < Admin::BaseController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    train = Train.find(params[:ticket][:train_id])
-    @ticket.start_station = train.departure_station
-    @ticket.last_station = train.arrival_station
 
     if @ticket.save
       redirect_to admin_tickets_path, notice: 'Tickets was successfully created'
