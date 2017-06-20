@@ -25,12 +25,12 @@
       <td><%= @ticket.train.number %></td>
       <td><%= @ticket.train.route.title %></td>
       <td>
-        <%= @departure_station.title %><br/>
-        <%= @departure_station.check_station_attr(@ticket.train.route, :departure_time) %>
+        <%= @ticket.start_station.title %><br/>
+        <%= @ticket.start_station.check_station_attr(@ticket.train.route, :departure_time) %>
       </td>
       <td>
-        <%= @arrival_station.title %><br/>
-        <%= @arrival_station.check_station_attr(@ticket.train.route, :arrival_time) %>
+        <%= @ticket.last_station.title %><br/>
+        <%= @ticket.last_station.check_station_attr(@ticket.train.route, :arrival_time) %>
       </td>
     </tbody>
   </table>
