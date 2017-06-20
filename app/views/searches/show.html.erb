@@ -46,14 +46,9 @@
             <%= @arrival_station.title %><br/>
             <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
           </td>
-
           <td class="text-right">
-            <%= form_tag(user_signed_in? && current_user.admin? ? new_admin_ticket_path : new_ticket_path, method: :get) do %>
-                <%= hidden_field_tag :train_id, train.id %>
-                <%= hidden_field_tag :start_station_id, @departure_station.id %>
-                <%= hidden_field_tag :last_station_id, @arrival_station.id %>
-                <%= submit_tag 'Buy', class: 'btn btn-default btn-sm' %>
-            <% end %>
+            <%= link_to 'Buy', ticket_path_helper(train), class: 'btn btn-default btn-sm' %>
+          </td>
         </tr>
       <% end %>
     </tbody>
