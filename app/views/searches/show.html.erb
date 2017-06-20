@@ -46,12 +46,8 @@
             <%= @arrival_station.title %><br/>
             <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
           </td>
-
           <td class="text-right">
-            <%= link_to 'Купить билет', new_ticket_path(
-                train_id: train.id,
-                start_station_id: @departure_station,
-                last_station_id: @arrival_station) %>
+            <%= link_to 'Buy', ticket_path_helper(train), class: 'btn btn-default btn-sm' %>
           </td>
         </tr>
       <% end %>

@@ -1,0 +1,8 @@
+<tr>
+  <td><%= train.number %></td>
+  <%= render 'shared/actions', links: {
+      show:   admin_train_path(train),
+      edit:   edit_admin_train_path(train),
+      delete: admin_train_path(train)
+  } %>
+</tr>

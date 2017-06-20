@@ -1,0 +1,10 @@
+<tr>
+  <td><%= ticket.train.number %></td>
+  <td><%= ticket.train.route.title %></td>
+  <td><%= ticket.start_station.title %></td>
+  <td><%= ticket.last_station.title %></td>
+  <td><%= render 'shared/actions', links: {
+      show:   ticket_path(ticket),
+      delete: ticket_path(ticket)
+  } %></td>
+</tr>

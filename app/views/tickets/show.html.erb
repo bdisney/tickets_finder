@@ -1,9 +1,19 @@
 <h1>Билет</h1>
 
 <div class="">
-  <p><span class="text-muted">ФИО</span>: <%= @ticket.passenger_name %></p>
+  <h4>Детали заказа</h4>
+  <p><span class="text-muted">Имя клиента:</span> <%= @ticket.user.full_name %></p>
+  <p>
+    <span class="text-muted">Дата и время покупки билета:</span>
+    <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %>
+  </p>
+  <h4>Сведения о пассажире:</h4>
+  <p>
+    <span class="text-muted">Имя пассажира:</span>
+    <%= @ticket.passenger_name %>
+  </p>
   <p><span class="text-muted">Номер паспорта: </span><%= @ticket.passport_number %></p>
-
+  <br/>
   <table class="table">
     <thead>
       <th>Поезд</th>
@@ -15,13 +25,15 @@
       <td><%= @ticket.train.number %></td>
       <td><%= @ticket.train.route.title %></td>
       <td>
-        <%= @departure_station.title %><br/>
-        <%= @departure_station.check_station_attr(@ticket.train.route, :departure_time) %>
+        <%= @ticket.start_station.title %><br/>
+        <%= @ticket.start_station.check_station_attr(@ticket.train.route, :departure_time) %>
       </td>
       <td>
-        <%= @arrival_station.title %><br/>
-        <%= @arrival_station.check_station_attr(@ticket.train.route, :arrival_time) %>
+        <%= @ticket.last_station.title %><br/>
+        <%= @ticket.last_station.check_station_attr(@ticket.train.route, :arrival_time) %>
       </td>
     </tbody>
   </table>
 </div>
+
+<%= link_to 'Back', tickets_path %>

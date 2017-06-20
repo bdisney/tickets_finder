@@ -1,0 +1,32 @@
+<%= form_for [:admin, ticket] do |f| %>
+    <%= render 'shared/errors_messages', resource: ticket %>
+    <%= f.hidden_field :train_id %>
+    <%= f.hidden_field :start_station_id %>
+    <%= f.hidden_field :last_station_id %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :users, 'Выберите пользователя' %>
+        <%= f.collection_select :user_id, User.all, :id, :email, {}, class: "form-control" %>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :passenger_name, 'ФИО пассажира' %>
+        <%= f.text_field :passenger_name, class: "form-control" %>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :passport_number, 'Номер паспорта' %>
+        <%= f.text_field :passport_number, placeholder: 'XXXX XXXXXX', class: "form-control" %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="actions">
+      <%= f.submit "#{ ticket.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-default" %>
+    </div>
+<% end %>

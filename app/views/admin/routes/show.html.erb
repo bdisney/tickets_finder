@@ -1,0 +1,67 @@
+<p>
+  <strong>Название:</strong>
+  <%= @route.title %>
+</p>
+
+<p>
+  <strong>Поезда на маршруте:</strong>
+  <% if @route.trains.present? %>
+      <% @route.trains.each do |train|  %>
+        <ul>
+          <li><%= train.number %></li>
+        </ul>
+    <% end %>
+<% else %>
+    Поездов на маршруте нет.
+<% end %>
+</p>
+
+<p>
+  <strong>Станции в маршруте: </strong>
+  <% if @route.railway_stations.present? %>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <thead>
+            <th>Станция</th>
+            <th colspan="2">Позиция</th>
+            <th>Время прибытия</th>
+            <th>Время отправления</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <% @route.railway_stations.sorted.each do |station| %>
+              <tr>
+                <td><%= station.title %></td>
+                <td>
+                  <%= form_tag update_position_admin_railway_station_path(station),
+                               method: :patch do %>
+                      <%= number_field_tag :position, station.check_station_attr(@route, :position) %>
+                      <%= hidden_field_tag :route_id, @route.id %></td>
+                      <td><%= submit_tag 'Изменить' %></td>
+                  <% end %>
+                  <%= form_tag update_time_admin_railway_station_path(station),
+                               method: :patch do %>
+
+                      <td><%= time_field_tag :arrival_time,
+                                             station.check_station_attr(@route, :arrival_time) %></td>
+                      <td><%= time_field_tag :departure_time,
+                                             station.check_station_attr(@route, :departure_time) %></td>
+                          <%= hidden_field_tag :route_id, @route.id %>
+                      <td><%= submit_tag 'Изменить' %></td>
+                  <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% else %>
+    Не назначены.
+  <% end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_admin_route_path(@route) %> |
+<%= link_to 'Back', admin_routes_path %>

@@ -1,0 +1,8 @@
+<tr>
+  <td><%= route.title %></td>
+  <%= render 'shared/actions', links: {
+      show:   admin_route_path(route),
+      edit:   edit_admin_route_path(route),
+      delete: admin_route_path(route)
+  } %>
+</tr>

@@ -20,4 +20,12 @@ class Train < ApplicationRecord
   def sorted_carriages
     order_from_end ? carriages.reverse : carriages
   end
+
+  def departure_station
+    route.railway_stations.order('position ASC').first
+  end
+
+  def arrival_station
+    route.railway_stations.order('position DESC').first
+  end
 end

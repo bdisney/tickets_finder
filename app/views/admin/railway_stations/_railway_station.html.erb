@@ -1,0 +1,8 @@
+<tr>
+  <td><%= railway_station.title %></td>
+  <%= render 'shared/actions', links: {
+      show:   admin_railway_station_path(railway_station),
+      edit:   edit_admin_railway_station_path(railway_station),
+      delete: admin_railway_station_path(railway_station)
+  } %>
+</tr>
