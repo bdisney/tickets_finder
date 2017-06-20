@@ -48,7 +48,7 @@
           </td>
 
           <td class="text-right">
-            <%= form_tag(current_user.admin? ? new_admin_ticket_path : new_ticket_path, method: :get) do %>
+            <%= form_tag(user_signed_in? && current_user.admin? ? new_admin_ticket_path : new_ticket_path, method: :get) do %>
                 <%= hidden_field_tag :train_id, train.id %>
                 <%= hidden_field_tag :start_station_id, @departure_station.id %>
                 <%= hidden_field_tag :last_station_id, @arrival_station.id %>
