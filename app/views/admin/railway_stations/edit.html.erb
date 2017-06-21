@@ -1,6 +1,6 @@
-<h1>Редактировать станцию</h1>
+<h1><%= t('.edit_railway_station') %></h1>
 
 <%= render 'form', railway_station: @railway_station %>
 <br/>
-<%= link_to 'Show', admin_railway_station_path(@railway_station) %> |
-<%= link_to 'Back', admin_railway_stations_path %>
+<%= link_to t('common.show'), admin_railway_station_path(@railway_station) %> |
+<%= link_to t('common.back'), admin_railway_stations_path %>

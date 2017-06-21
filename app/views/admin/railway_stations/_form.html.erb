@@ -2,7 +2,7 @@
     <%= render 'shared/errors_messages', resource: railway_station %>
     <div class="row">
       <div class="col-md-6">
-      <%= f.label :title, 'Название' %>
+      <%= f.label :title %>
       <%= f.text_field :title, class: "form-control" %>
       </div>
     </div>
@@ -10,7 +10,6 @@
     <br>
 
     <div class="actions">
-      <%= f.submit "#{ railway_station.new_record? ? 'Создать' : 'Изменить' }",
-                   class: "btn btn-default" %>
+      <%= f.submit t('.submit', action: @railway_station.new_record? ? 'Создать' : 'Изменить'), class: "btn btn-default" %>
     </div>
 <% end %>

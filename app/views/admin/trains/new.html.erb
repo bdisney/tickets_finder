@@ -1,5 +1,5 @@
-<h1>Создать поезд</h1>
+<h1><%= t('.new_train') %></h1>
 
 <%= render 'form', train: @train %>
 <br/>
-<%= link_to 'Back', admin_trains_path %>
+<%= link_to t('common.back'), admin_trains_path %>

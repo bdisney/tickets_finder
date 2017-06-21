@@ -3,7 +3,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :railway_stations, 'Станции:' %>
+        <%= f.label :railway_stations, t('admin.routes.attributes.railway_stations') %>
         <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {},
                                 {multiple: true, class: "form-control" } %>
       </div>
@@ -12,6 +12,7 @@
     <br>
 
     <div class="actions">
-      <%= f.submit "#{ route.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-default" %>
+      <%= f.submit t('.submit', action: @route.new_record? ? 'Создать' : 'Изменить'),
+                   class: "btn btn-default" %>
     </div>
 <% end %>

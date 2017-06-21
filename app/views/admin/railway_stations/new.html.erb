@@ -1,6 +1,6 @@
-<h1>Новая станция</h1>
+<h1><%= t('.new_railway_station')%></h1>
 
 <%= render 'form', railway_station: @railway_station %>
 <br/>
 
-<%= link_to 'Back', admin_railway_stations_path %>
+<%= link_to t('common.back'), admin_railway_stations_path %>

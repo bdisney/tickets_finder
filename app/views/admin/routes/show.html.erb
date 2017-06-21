@@ -1,10 +1,9 @@
 <p>
-  <strong>Название:</strong>
-  <%= @route.title %>
+  <strong><%= t('admin.routes.attributes.title') %>: </strong><%= @route.title %>
 </p>
 
 <p>
-  <strong>Поезда на маршруте:</strong>
+  <strong><%= t('.trains_on_route')%>:</strong>
   <% if @route.trains.present? %>
       <% @route.trains.each do |train|  %>
         <ul>
@@ -12,21 +11,21 @@
         </ul>
     <% end %>
 <% else %>
-    Поездов на маршруте нет.
+    <%= t('common.empty') %>
 <% end %>
 </p>
 
 <p>
-  <strong>Станции в маршруте: </strong>
+  <strong><%= t('.routes_railway_stations') %>: </strong>
   <% if @route.railway_stations.present? %>
     <div class="row">
       <div class="col-md-6">
         <table class="table">
           <thead>
-            <th>Станция</th>
-            <th colspan="2">Позиция</th>
-            <th>Время прибытия</th>
-            <th>Время отправления</th>
+            <th><%= t('admin.routes.attributes.title')%></th>
+            <th colspan="2"><%= t('admin.routes.attributes.position')%></th>
+            <th><%= t('admin.routes.attributes.arrival_time')%></th>
+            <th><%= t('admin.routes.attributes.departure_time')%></th>
             <th></th>
           </thead>
           <tbody>
@@ -38,7 +37,7 @@
                                method: :patch do %>
                       <%= number_field_tag :position, station.check_station_attr(@route, :position) %>
                       <%= hidden_field_tag :route_id, @route.id %></td>
-                      <td><%= submit_tag 'Изменить' %></td>
+                      <td><%= submit_tag t('common.update') %></td>
                   <% end %>
                   <%= form_tag update_time_admin_railway_station_path(station),
                                method: :patch do %>
@@ -48,7 +47,7 @@
                       <td><%= time_field_tag :departure_time,
                                              station.check_station_attr(@route, :departure_time) %></td>
                           <%= hidden_field_tag :route_id, @route.id %>
-                      <td><%= submit_tag 'Изменить' %></td>
+                      <td><%= submit_tag t('common.update') %></td>
                   <% end %>
               </tr>
             <% end %>
@@ -63,5 +62,5 @@
 
 
 
-<%= link_to 'Edit', edit_admin_route_path(@route) %> |
-<%= link_to 'Back', admin_routes_path %>
+<%= link_to t('common.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('common.back'), admin_routes_path %>

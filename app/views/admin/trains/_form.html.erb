@@ -2,29 +2,30 @@
     <%= render 'shared/errors_messages', resource: train %>
 
     <div class="form-inline">
-      <%= f.label :number, 'Номер:', class: "text-muted" %>
+      <%= f.label :number, class: "text-muted" %>:
       <%= f.text_field :number, class: "form-control" %>
     </div>
     <br />
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :current_station, 'Текущая станция:', class: "text-muted" %>
+        <%= f.label :current_station, class: "text-muted" %>
         <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title, {},
                                 class: "form-control" %>
       </div>
       <div class="col-md-6">
-        <%= f.label :route, 'Маршрут:', class: "text-muted" %>
+        <%= f.label :route, class: "text-muted" %>
         <%= f.collection_select :route_id, Route.all, :id, :title, {},
                                 class: "form-control" %>
       </div>
     </div>
     <br />
     <div class="text-muted">
-        <%= f.label :order_from_tail, 'Нумерация вагонов с хвоста' %>
+        <%= f.label :order_from_end, t('.order_from_end') %>
         <%= f.check_box :order_from_end %>
     </div>
     <br/>
     <div class="actions">
-      <%= f.submit "#{ train.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-default" %>
+      <%= f.submit t('.submit', action: train.new_record? ? 'Создать' : 'Изменить'),
+                   class: "btn btn-default" %>
     </div>
 <% end %>

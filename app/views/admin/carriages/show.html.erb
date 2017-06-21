@@ -1,22 +1,22 @@
 <p>
-  <strong>Вагон:</strong>
+  <strong><%= t('.carriage') %>:</strong>
   <%= @carriage.type %>
 </p>
 
 <p>
-  <strong>Прикреплен к поезду: </strong>
+  <strong><%= t('.attached_to_the_train') %>: </strong>
   <% if @carriage.train.present? %>
       <%= @carriage.train.number %>
   <% else %>
-    вагон не добавлен к поезду.
+    <%= t('common.empty') %>
 <% end %>
 </p>
 
-<p><strong>Места в вагоне:</strong></p>
+<p><strong><%= t('admin.carriages.attributes.seats_qty') %>:</strong></p>
 
 <%= render "#{@carriage.type.underscore}", carriage: @carriage %>
 
 
 
-<%= link_to 'Edit', edit_admin_train_carriage_path(@carriage.train, @carriage) %> |
-<%= link_to 'Back', admin_train_path(@carriage.train) %>
+<%= link_to t('common.edit'), edit_admin_train_carriage_path(@carriage.train, @carriage) %> |
+<%= link_to t('common.back'), admin_train_path(@carriage.train) %>
