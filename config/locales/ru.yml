@@ -13,10 +13,20 @@ ru:
         railway_stations: 'Станции'
       new:
         new_railway_station: 'Новая станция'
+      create:
+        notice: 'Станция была создана'
       edit:
         edit_railway_station: 'Редактировать станцию'
+      update:
+        notice: 'Станция успешно обновлена'
+      update_position:
+        notice: 'Позиция обновлена'
+      update_time:
+        notice: 'Расписание обновлено'
       show:
         railway_station: 'Станция'
+      destroy:
+        notice: 'Станция удалена'
       form:
         submit: '%{action}'
       attributes:
@@ -31,6 +41,12 @@ ru:
         routes_railway_stations: 'Станции в маршруте'
       edit:
         route_editing: 'Редактирование маршрута'
+      create:
+        notice: 'Маршрут создан'
+      update:
+        notice: 'Маршрут обновлен'
+      destroy:
+        notice: 'Маршрут удален'
       form:
         submit: '%{action}'
       attributes:
@@ -49,6 +65,12 @@ ru:
       show:
         add_carriage: 'Добавить вагон'
         carriage_number: 'Номер вагона'
+      create:
+        notice: 'Поезд успешно создан'
+      update:
+        notice: 'Поезд обновлен'
+      destroy:
+        notice: 'Поезд удален'
       form:
         route: 'Маршрут'
         order_from_end: 'Нумерация вагонов с хвоста'
@@ -57,12 +79,25 @@ ru:
         number: 'Номер'
         current_station: 'Текущая станция'
         route: 'Маршрут'
+    tickets:
+      create:
+        notice: 'Билет создан'
+      update:
+        notice: 'Билет обновлен'
+      destroy:
+        notice: 'Билет удален'
     carriages:
       index:
       new:
         new_carriage: 'Новый вагон'
       edit:
         edit_carriage: 'Редактировать вагон'
+      create:
+        notice: 'Вагон добавлен'
+      update:
+        notice: 'Вагон обновлен'
+      destroy:
+        notice: 'Вагон удален'
       show:
         carriage: 'Вагон'
         attached_to_the_train: 'Прикреплен к поезду'
