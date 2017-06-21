@@ -5,6 +5,6 @@ module SearchesHelper
         start_station_id: @departure_station,
         last_station_id: @arrival_station
     }
-    path = current_user.admin? ? new_admin_ticket_path(params) : new_ticket_path(params)
+    path = user_signed_in? && current_user.admin? ? new_admin_ticket_path(params) : new_ticket_path(params)
   end
 end
