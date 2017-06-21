@@ -7,6 +7,24 @@ ru:
     actions: 'Действия'
     add: 'Добавить'
     empty: 'не назначены'
+  searches:
+    create:
+      warning: 'По вашему запросу ничего не найдено. Попробуйте изменить условия'
+  search:
+    show:
+      tickets_search: 'Поиск билетов'
+      search_result: 'Результаты поиска'
+      submit: 'Мне повезет!'
+
+    attributes:
+      departure_station: 'Станция отправления'
+      arrival_station: 'Станция назначения'
+      train_number: 'Номер поезда'
+      route: 'Маршрут'
+      railway_station: 'Станция'
+      departure_time: 'время отправления'
+      arrival_time: 'время прибытия'
+      book: 'Забронировать'
   admin:
     railway_stations:
       index:

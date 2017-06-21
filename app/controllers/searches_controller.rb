@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
       @arrival_station   = RailwayStation.find(params[:arrival_station])
       render :show
     else
-      redirect_to search_path, notice: 'По вашему запросу ничего не найдено.'
+      redirect_to search_path, notice: t('.warning')
     end
   end
 end
