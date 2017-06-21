@@ -15,7 +15,6 @@ ru:
       tickets_search: 'Поиск билетов'
       search_result: 'Результаты поиска'
       submit: 'Мне повезет!'
-
     attributes:
       departure_station: 'Станция отправления'
       arrival_station: 'Станция назначения'
@@ -25,6 +24,31 @@ ru:
       departure_time: 'время отправления'
       arrival_time: 'время прибытия'
       book: 'Забронировать'
+  tickets:
+    index:
+      my_tickets: 'Мои билеты'
+    new:
+      buy_ticket: 'Купить билет'
+      buy: 'Купить'
+    show:
+      ticket: 'Билет'
+      client_details: 'Информация о клиенте'
+      client_name: 'Имя'
+      ticket_created_at: 'Дата и время покупки билета'
+      passenger_details: 'Сведения о пассажире'
+      passenger_name: 'Имя пассажира'
+      passport_number: 'Номер паспорта'
+    create:
+      notice: 'Билет создан'
+    update:
+      notice: 'Билет обновлен'
+    destroy:
+      notice: 'Билет удален'
+    attributes:
+      route: 'Маршрут'
+      departure_station: 'Станция отправления'
+      arrival_station: 'Станция назначения'
+      empty: 'Вы еще ничего не приобрели'
   admin:
     railway_stations:
       index:

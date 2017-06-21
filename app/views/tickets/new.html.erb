@@ -1,4 +1,4 @@
-<h1>Купить билет</h1>
+<h1><%= t('.buy_ticket') %></h1>
 
 <%= form_for(@ticket) do |f| %>
   <%= render 'shared/errors_messages', resource: @ticket %>
@@ -7,19 +7,19 @@
   <%= f.hidden_field :last_station_id %>
   <div class="row">
     <div class="col-md-4">
-      <%= f.label :passenger_name, 'Имя пассажира' %>
+      <%= f.label :passenger_name %>
       <%= f.text_field :passenger_name, class: 'form-control', placeholder: 'ИМЯ ФАМИЛИЯ' %>
       <br/>
-      <%= f.label :passport_number, 'Номер паспорта' %>
+      <%= f.label :passport_number %>
       <%= f.text_field :passport_number, class: 'form-control', placeholder: 'XXXX XXXXX'  %>
     </div>
   </div>
   <br>
   <div class="actions">
-    <%= f.submit 'Купить', class: "btn btn-default" %>
+    <%= f.submit t('.buy'), class: "btn btn-default" %>
   </div>
 <% end %>
 
 <br/>
 
-<%= link_to 'Back', search_path %>
+<%= link_to t('common.back'), search_path %>

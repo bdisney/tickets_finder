@@ -3,6 +3,7 @@ ru:
     models:
       railway_station: 'Станция'
       train: 'Поезд'
+      route: 'Маршрут'
     attributes:
       railway_station:
         title: 'Наименование'
