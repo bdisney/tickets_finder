@@ -1,0 +1,27 @@
+html,
+body {
+    height: 100%;
+}
+/* Navigation*/
+
+.navbar {
+    background-color: #0a0b0d;
+}
+
+.top-nav-collapse {
+    background-color: #2E2E2E;
+}
+
+
+
+main {
+    padding-top: 10%;
+    padding-bottom: 5%;
+    background: none;
+}
+
+
+
+#non-bordered-th th {
+    border-top: none;
+}

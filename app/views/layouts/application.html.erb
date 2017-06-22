@@ -10,7 +10,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
@@ -30,7 +29,7 @@
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand waves-effect waves-light" href="" >TicketsFINDER</a>
+          <div class="navbar-brand">TicketsFINDER</div>
           <div class="collapse navbar-collapse" id="navbarNav1">
             <ul class="navbar-nav mr-auto">
               <%= render 'shared/user_nav_bar' %>
@@ -48,18 +47,17 @@
       </nav>
       <!--/.Navbar-->
     </header>
-    <main>
-      <!--Mask-->
-      <div class="view hm-black-strong">
-        <div class="full-bg-img">
-          <div class="container">
-            <%= render 'shared/flash_notices' %>
-            <%= yield %>
-          </div>
+
+    <!--Mask-->
+    <div class="view hm-black-strong">
+      <div class="full-bg-img">
+        <div class="container">
+          <%= render 'shared/flash_notices' %>
+          <%= yield %>
         </div>
       </div>
-      <!--/.Mask-->
-    </main>
+    </div>
+    <!--/.Mask-->
 
     <!-- SCRIPTS -->
 
