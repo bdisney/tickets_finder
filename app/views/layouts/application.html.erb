@@ -32,8 +32,11 @@
           <div class="navbar-brand">TicketsFINDER</div>
           <div class="collapse navbar-collapse" id="navbarNav1">
             <ul class="navbar-nav mr-auto">
-              <%= render 'shared/user_nav_bar' %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= search_path %>">Search <span class="sr-only">(current)</span></a>
+              </li>
               <% if user_signed_in? %>
+                  <%= render 'shared/user_nav_bar' %>
                   <%= render 'shared/admin_nav_bar' if current_user.admin? %>
               <% end %>
             </ul>
