@@ -1,55 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>TicketsFinder</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  </head>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <%= stylesheet_link_tag 'bootstrap.min.css' %>
+
+    <!-- Material Design Bootstrap -->
+    <%= stylesheet_link_tag 'mdb.min.css' %>
+    <%= stylesheet_link_tag 'style.css' %>
+  </head>
   <body>
-    <neader>
-      <nav class="navbar navbar-default navbar-fixed-top">
+    <!--Navigation & Intro-->
+    <header>
+      <!--Navbar-->
+      <nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
         <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="<%= root_path %>">TicketsFinder</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div class="nav navbar-nav">
-              <li><%= link_to 'Search', search_path %></li>
-              <li><%= link_to 'My tickets', tickets_path %></li>
-              <% if user_signed_in? && current_user.admin? %>
-                <li><%= link_to 'Stations', admin_railway_stations_path %></li>
-                <li><%= link_to 'Routes', admin_routes_path %></li>
-                <li><%= link_to 'Trains', admin_trains_path %></li>
-                <li><%= link_to 'Tickets', admin_tickets_path %></li>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand waves-effect waves-light" href="" >TicketsFINDER</a>
+          <div class="collapse navbar-collapse" id="navbarNav1">
+            <ul class="navbar-nav mr-auto">
+              <%= render 'shared/user_nav_bar' %>
+              <% if user_signed_in? %>
+                  <%= render 'shared/admin_nav_bar' if current_user.admin? %>
               <% end %>
-            </div>
-            <% if user_signed_in? %>
-              <p class="navbar-text navbar-right">
-                Signed in as <%= current_user.full_name %>
-                <%= link_to 'Sign out', destroy_user_session_path, method: :delete,
-                            class: 'navbar-link' %>
-              </p>
-            <% else %>
-              <p class="navbar-text navbar-right">
-              <%= link_to 'Sign in', new_user_session_path, class: 'navbar-link' %>
-              </p></ul>
-            <% end %>
+            </ul>
+
+            <!--Navbar icons-->
+            <ul class="nav navbar-nav nav-flex-icons ml-auto">
+              <%= render 'shared/nav_bar_icons' %>
+            </ul>
           </div>
         </div>
       </nav>
-    </neader>
+      <!--/.Navbar-->
+    </header>
     <main>
-      <div class="container">
-        <%= render 'shared/flash_notices' %>
-          <%= yield %>
-        <%= render 'shared/footer' %>
+      <!--Mask-->
+      <div class="view hm-black-strong">
+        <div class="full-bg-img">
+          <div class="container">
+            <%= render 'shared/flash_notices' %>
+            <%= yield %>
+          </div>
+        </div>
       </div>
+      <!--/.Mask-->
     </main>
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <%= javascript_include_tag 'jquery-3.1.1.js' %>
+
+    <!-- Tooltips -->
+    <%= javascript_include_tag 'tether.min.js' %>
+
+    <!-- Bootstrap core JavaScript -->
+    <%= javascript_include_tag 'bootstrap.min.js' %>
+
+    <!-- MDB core JavaScript -->
+    <%= javascript_include_tag 'mdb.min.js' %>
+
+    <script>
+        new WOW().init();
+    </script>
   </body>
 </html>

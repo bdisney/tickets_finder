@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+    <li class="nav-item">
+      <a class="nav-link">Signed as <%= current_user.email %></a>
+    </li>
+    <li class="nav-item">
+      <%= link_to raw("<i class=\"fa fa-sign-out\"></i><span class=\"hidden-sm-down\">Log out</span>"),
+                  destroy_user_session_path,
+                  class: "nav-link",
+                  rel: "nofollow",
+                  method: :delete %></a>
+    </li>
+<% else %>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= new_user_session_path %>">Sign in <i class="fa fa-sign-in"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= new_user_registration_path %>">Sign up <i class="fa fa-sign-out"></i></a>
+    </li>
+<% end %>
