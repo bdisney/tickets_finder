@@ -1,7 +1,9 @@
-<p>
-  <strong><%= t('admin.trains.attributes.number') %>:</strong>
-  <%= @train.number %>
-</p>
+<h1 class="h1-responsive" data-wow-delay="0.3s">
+  <%= t('activerecord.models.train')%>
+  <%= t('admin.trains.attributes.number') %>
+  <%= @train.number %></h1>
+<hr class="hr-dark">
+<br/>
 <p>
   <strong><%= t('admin.trains.attributes.current_station')%></strong>
   <%= @train.current_station.title %>
@@ -16,9 +18,12 @@
 </p>
 
 <%= link_to t('.add_carriage'), new_admin_train_carriage_path(@train), class: 'btn btn-default btn-sm' %>
-<br/>
+<br/><br/>
 <% if @train.carriages.present? %>
-  <table class="table ">
+    <div class="card">
+      <div class="card-block">
+
+  <table class="table" id="non-bordered-th">
     <thead>
       <th><%= t('.carriage_number') %></th>
       <th colspan="3" class="text-center"><%= t('admin.carriages.attributes.carriage_type') %></th>
@@ -43,8 +48,8 @@
         <td colspan="7"></td>
       </tr>
         <tr>
-          <th colspan="2"></th>
-          <th colspan="5" class="text-center"><%= t('admin.carriages.attributes.seats_by_type') %></th>
+          <th colspan="2" style="border: none"></th>
+          <th colspan="5" class="text-center" style="border: none"><%= t('admin.carriages.attributes.seats_by_type') %></th>
         </tr>
         <tr>
           <th colspan="2"></th>
@@ -65,6 +70,8 @@
           <%end %>
     </tbody>
   </table>
+      </div>
+    </div>
 <% end %>
 
 <br/>

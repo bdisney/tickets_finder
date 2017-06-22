@@ -1,31 +1,38 @@
 <%= form_for [:admin, train] do |f| %>
-    <%= render 'shared/errors_messages', resource: train %>
-
-    <div class="form-inline">
-      <%= f.label :number, class: "text-muted" %>:
-      <%= f.text_field :number, class: "form-control" %>
-    </div>
-    <br />
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.label :current_station, class: "text-muted" %>
-        <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title, {},
-                                class: "form-control" %>
+  <%= render 'shared/errors_messages', resource: train %>
+  <div class="card">
+    <div class="card-block">
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.label :number, class: "text-muted" %>:
+          <%= f.text_field :number, class: "input-alternate" %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <%= f.label :route, class: "text-muted" %>
-        <%= f.collection_select :route_id, Route.all, :id, :title, {},
-                                class: "form-control" %>
+      <br />
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :current_station, class: "text-muted" %>
+          <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title, {},
+                                  class: "mdb-select colorful-select dropdown-dark" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :route, class: "text-muted" %>
+          <%= f.collection_select :route_id, Route.all, :id, :title, {},
+                                  class: "mdb-select colorful-select dropdown-dark" %>
+        </div>
       </div>
-    </div>
-    <br />
-    <div class="text-muted">
+      <br />
+      <div class="checkbox">
+        <%= f.check_box :order_from_end%>
         <%= f.label :order_from_end, t('.order_from_end') %>
-        <%= f.check_box :order_from_end %>
+
+      </div>
+      <br/>
+      <div class="actions">
+        <button type="submit" class="btn btn-default">
+          <%= t('.submit', action: @train.new_record? ? 'Создать' : 'Изменить') %>
+        </button>
+      </div>
     </div>
-    <br/>
-    <div class="actions">
-      <%= f.submit t('.submit', action: train.new_record? ? 'Создать' : 'Изменить'),
-                   class: "btn btn-default" %>
-    </div>
+  </div>
 <% end %>

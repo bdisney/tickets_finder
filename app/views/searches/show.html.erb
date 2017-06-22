@@ -1,58 +1,82 @@
-<h1><%= t('search.show.tickets_search')%></h1>
+<div class="description">
+  <h2 class="h2-responsive wow fadeInLeft" data-wow-delay="0.3s"><%= t('search.show.tickets_search')%></h2>
+  <hr class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
+</div>
 
 <%= form_tag search_path, role: 'form'  do %>
-  <div class="row">
-    <div class="col-md-6">
-      <%= label_tag :departure_station, t('search.attributes.departure_station') %>
-      <%= select_tag :departure_station,
-                     options_from_collection_for_select(RailwayStation.all, :id, :title),
-                     class: 'form-control' %>
+    <div class="card" id="transparent">
+      <div class="card-block">
+        <div class="row">
+          <div class="col-md-4">
+            <h5 class="text-white"><%=  t('search.attributes.departure_station') %></h5>
+            <%= select_tag :departure_station,
+                           options_from_collection_for_select(RailwayStation.all, :id, :title),
+                           class: "mdb-select colorful-select" %>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-white"><%= t('search.attributes.arrival_station') %></h5>
+            <%= select_tag :arrival_station,
+                             options_from_collection_for_select(RailwayStation.all, :id, :title),
+                             class: "mdb-select colorful-select dropdown-danger" %>
+          </div>
+          <div class="col-md-4 text-lg-right center-on-small-only ">
+            <br/>
+            <button type="submit" class="btn btn-success waves-effect " style="width: 170px"> <%= t('search.show.submit') %> </button>
+           </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <%= label_tag :arrival_station, t('search.attributes.arrival_station') %>
-      <%= select_tag :arrival_station,
-                     options_from_collection_for_select(RailwayStation.all, :id, :title),
-                     class: 'form-control' %>
-    </div>
-  </div>
-    <br/>
-  <div class="">
-    <%= submit_tag t('search.show.submit'), class: 'btn btn-default' %>
-  </div>
+
 <% end %>
 
 <% if @trains.present? %>
   <br/>
-  <p><%= t('search.show.search_result') %>:</p>
+  <br/>
+    <h2 class="h2-responsive wow fadeInUpBig">
+      <p class="text-white"><%= t('search.show.search_result') %>:</p>
+    </h2>
+    <hr class="hr-dark wow fadeInLeftBig" data-wow-delay="0.3s">
 
-  <table class="table">
-    <thead>
-      <th><%= t('search.attributes.train_number') %></th>
-      <th class="text-center"><%= t('search.attributes.route') %></th>
-      <th class="text-center"><%= t('search.attributes.railway_station') %>,
-          <br/> <%= t('search.attributes.departure_time') %></th>
-      <th class="text-center"><%= t('search.attributes.railway_station')%>,
-        <br/><%= t('search.attributes.arrival_time') %> </th>
-      <th></th>
-    </thead>
-    <tbody>
-      <% @trains.each do |train| %>
-        <tr>
-          <td><%= train.number %></td>
-          <td class="text-center"><%= train.route.title %></td>
-          <td class="text-center">
-            <%= @departure_station.title %><br/>
-            <%= @departure_station.check_station_attr(train.route, :departure_time) %>
-          </td>
-          <td class="text-center">
-            <%= @arrival_station.title %><br/>
-            <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
-          </td>
-          <td class="text-right">
-            <%= link_to t('search.attributes.book'), ticket_path_helper(train), class: 'btn btn-default btn-sm' %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="card wow fadeInUpBig" id="transparent">
+    <div class="card-block">
+      <table class="table text-white text-center">
+        <thead >
+          <th class="text-center" style="border: none"><%= t('search.attributes.train_number') %></th>
+          <th class="text-center" style="border: none"><%= t('search.attributes.route') %></th>
+          <th class="text-center" style="border: none"><%= t('search.attributes.railway_station') %>,
+              <br/> <%= t('search.attributes.departure_time') %></th>
+          <th class="text-center" style="border: none"><%= t('search.attributes.railway_station')%>,
+            <br/><%= t('search.attributes.arrival_time') %> </th>
+          <th style="border: none"></th>
+        </thead>
+        <tbody>
+          <% @trains.each do |train| %>
+            <tr>
+              <td><%= train.number %></td>
+              <td class="text-center"><%= train.route.title %></td>
+              <td class="text-center">
+                <%= @departure_station.title %><br/>
+                <%= @departure_station.check_station_attr(train.route, :departure_time) %>
+              </td>
+              <td class="text-center">
+                <%= @arrival_station.title %><br/>
+                <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
+              </td>
+              <td class="text-right">
+                <%= link_to t('search.attributes.book'), ticket_path_helper(train), class: 'btn btn-default btn-sm' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>
+
+
+<script>
+  $(document).ready(function() {
+    $('.mdb-select').material_select();
+  });
+</script>
+

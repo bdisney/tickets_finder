@@ -4,6 +4,8 @@ ru:
       railway_station: 'Станция'
       train: 'Поезд'
       route: 'Маршрут'
+      ticket: 'Билет'
+      user: 'Пользователь'
     attributes:
       railway_station:
         title: 'Наименование'
@@ -21,6 +23,9 @@ ru:
       ticket:
         passport_number: 'Номер паспорта'
         passenger_name: 'Имя пассажира'
+      user:
+        first_name: "Имя"
+        last_name: "Фамилия"
     errors:
       messages:
         blank: 'не может быть пустым'

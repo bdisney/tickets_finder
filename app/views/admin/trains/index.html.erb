@@ -1,14 +1,15 @@
-<h1><%= t('.trains')%></h1>
+<h1 class="h1-responsive" data-wow-delay="0.3s"><%= t('.trains')%></h1>
+<hr class="hr-dark">
+
 <div class="row">
   <div class="col-md-6">
-    <table class="table">
+    <table class="table" id="non-bordered-th">
       <thead>
         <tr>
           <th><%= t('admin.trains.attributes.number') %></th>
           <th colspan="3" class="text-right"><%= t('common.actions') %></th>
         </tr>
       </thead>
-
       <tbody>
         <%= render @trains %>
       </tbody>

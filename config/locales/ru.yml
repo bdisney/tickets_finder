@@ -118,16 +118,28 @@ ru:
         order_from_end: 'Нумерация вагонов с хвоста'
         submit: '%{action}'
       attributes:
-        number: 'Номер'
+        number: 'номер'
         current_station: 'Текущая станция'
         route: 'Маршрут'
     tickets:
+      index:
+        tickets: 'Билеты'
+      edit:
+        edit_ticket: 'Редактировать билет'
+      form:
+        submit: '%{action}'
       create:
         notice: 'Билет создан'
       update:
         notice: 'Билет обновлен'
       destroy:
         notice: 'Билет удален'
+      attributes:
+        client_name: 'Имя клиента'
+        train_number: 'Номер поезда'
+        route: 'Маршрут'
+        departure_station: 'Станция отправления'
+        arrival_station: 'Станция назначения'
     carriages:
       index:
       new:

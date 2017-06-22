@@ -1,25 +1,34 @@
-<h1><%= t('.buy_ticket') %></h1>
+<div class="description">
+  <h2 class="h2-responsive wow fadeInLeft" data-wow-delay="0.3s"><%= t('.buy_ticket') %></h2>
+  <hr class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
+</div>
 
 <%= form_for(@ticket) do |f| %>
   <%= render 'shared/errors_messages', resource: @ticket %>
   <%= f.hidden_field :train_id %>
   <%= f.hidden_field :start_station_id %>
   <%= f.hidden_field :last_station_id %>
-  <div class="row">
-    <div class="col-md-4">
-      <%= f.label :passenger_name %>
+    <div class="col-md-6">
+    <div class="card  wow fadeInUpBig">
+      <div class="card-block" >
+
+        <h2><%= f.label :passenger_name %></h2>
       <%= f.text_field :passenger_name, class: 'form-control', placeholder: 'ИМЯ ФАМИЛИЯ' %>
       <br/>
       <%= f.label :passport_number %>
       <%= f.text_field :passport_number, class: 'form-control', placeholder: 'XXXX XXXXX'  %>
-    </div>
-  </div>
+
   <br>
-  <div class="actions">
-    <%= f.submit t('.buy'), class: "btn btn-default" %>
+  <div class="flex-center">
+      <button type="submit" class="btn btn-primary wow fadeInUpBig"><%= t('.buy') %></button>
   </div>
 <% end %>
+</div>
+</div>
+</div>
 
 <br/>
 
 <%= link_to t('common.back'), search_path %>
+
+

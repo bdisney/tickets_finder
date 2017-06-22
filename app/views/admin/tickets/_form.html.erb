@@ -5,28 +5,28 @@
     <%= f.hidden_field :last_station_id %>
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :users, 'Выберите пользователя' %>
-        <%= f.collection_select :user_id, User.all, :id, :email, {}, class: "form-control" %>
+        <%= f.label :user, t('activerecord.models.user') %>
+        <%= f.collection_select :user_id, User.all, :id, :email, {},
+                                class: "mdb-select colorful-select dropdown-dark" %>
       </div>
     </div>
     <br/>
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :passenger_name, 'ФИО пассажира' %>
-        <%= f.text_field :passenger_name, class: "form-control" %>
+        <%= f.label :passenger_name %>
+        <%= f.text_field :passenger_name, class: "md-form" %>
       </div>
     </div>
     <br/>
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :passport_number, 'Номер паспорта' %>
-        <%= f.text_field :passport_number, placeholder: 'XXXX XXXXXX', class: "form-control" %>
+        <%= f.label :passport_number %>
+        <%= f.text_field :passport_number, placeholder: 'XXXX XXXXXX', class: "md-form" %>
       </div>
     </div>
 
     <br>
-
-    <div class="actions">
-      <%= f.submit "#{ ticket.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-default" %>
-    </div>
+    <button type="submit" class="btn btn-default">
+      <%= t('.submit', action: ticket.new_record? ? 'Создать' : 'Изменить') %>
+    </button>
 <% end %>

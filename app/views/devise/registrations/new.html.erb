@@ -1,39 +1,51 @@
-<h2>Sign up</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %><br /><br />
+    <%= render 'shared/errors_messages' %>
+    <div class="registration-form">
+      <div class="flex-center">
+        <!--Form with header-->
+        <div class="card">
+          <div class="card-block" >
+            <!--Header-->
+            <div class="form-header blue-gradient">
+              <h3><i class="fa fa-user"></i> <%= t('.sign_up') %>:</h3>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render 'shared/errors_messages' %>
+            <!--Body-->
+            <div class="md-form">
+              <i class="fa fa-user prefix"></i>
+              <%= f.text_field :first_name, class: "form-control", id: "form2" %>
+              <label for="form2"><%= t('.first_name') %></label>
+            </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
+            <div class="md-form">
+              <i class="fa fa-user prefix" style="display: none;"></i>
+              <%= f.text_field :last_name, class: "form-control", id: "form2" %>
+              <label for="form2"><%= t('.last_name') %></label>
+            </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
+            <div class="md-form">
+              <i class="fa fa-envelope prefix"></i>
+              <%= f.email_field :email, class: "form-control", id: "form2" %>
+              <label for="form2"><%= t('.your_email') %></label>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+            <div class="md-form">
+              <i class="fa fa-lock prefix"></i>
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "form4" %>
+              <label for="form4"><%= t('.your_password') %></label>
+            </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+            <div class="text-center">
+              <button class="btn btn-indigo"><%= t('.sign_up') %></button>
+              <hr>
+              <fieldset class="form-group">
+                <input type="checkbox" id="checkbox1">
+                <label for="checkbox1"><%= t('.subscribe_me_to_the_newsletter') %></label>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br /><br />
 <% end %>
-
-<%= render "devise/shared/links" %>
