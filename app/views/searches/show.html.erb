@@ -3,7 +3,7 @@
   <hr class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
 </div>
 
-<%= form_tag search_path, role: 'form'  do %>
+<%= form_tag search_path, role: 'form', remote: true  do %>
     <div class="card" id="transparent">
       <div class="card-block">
         <div class="row">
@@ -28,49 +28,9 @@
     </div>
 
 <% end %>
-
-<% if @trains.present? %>
-  <div class="description">
-    <h2 class="h2-responsive wow fadeInUpBig">
-      <p class="text-white"><%= t('search.show.search_result') %>:</p>
-    </h2>
-    <hr class="hr-dark wow fadeInLeftBig" data-wow-delay="0.3s">
-  </div>
-  <div class="card wow fadeInLeftBig" id="transparent">
-    <div class="card-block">
-      <table class="table text-white text-center" id="non-bordered-th">
-        <thead >
-          <th class="text-center"><%= t('search.attributes.train_number') %></th>
-          <th class="text-center"><%= t('search.attributes.route') %></th>
-          <th class="text-center"><%= t('search.attributes.railway_station') %>,
-              <br/> <%= t('search.attributes.departure_time') %></th>
-          <th class="text-center"><%= t('search.attributes.railway_station')%>,
-            <br/><%= t('search.attributes.arrival_time') %> </th>
-          <th ></th>
-        </thead>
-        <tbody>
-          <% @trains.each do |train| %>
-            <tr>
-              <td><%= train.number %></td>
-              <td class="text-center"><%= train.route.title %></td>
-              <td class="text-center">
-                <%= @departure_station.title %><br/>
-                <%= @departure_station.check_station_attr(train.route, :departure_time) %>
-              </td>
-              <td class="text-center">
-                <%= @arrival_station.title %><br/>
-                <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
-              </td>
-              <td class="text-right wow fadeInRightBig" data-wow-delay="0.6s">
-                <%= link_to t('search.attributes.book'), ticket_path_helper(train), class: 'btn btn-default btn-sm' %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-<% end %>
+<div id="search_result">
+  <%=render 'result' %>
+</div>
 
 
 <script>

@@ -1,0 +1,7 @@
+<% if @trains.present? %>
+  $('#search_result').html('<%= j render('result') %>');
+<% else %>
+  toastr.warning('Холи-гуакомоле! Попробуйте изменить условия поиска.')
+<% end %>
+
+
