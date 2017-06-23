@@ -4,10 +4,10 @@
 </div>
 
 <% if @tickets.present? %>
-  <div class="card wow fadeInUpBig">
-    <div class="card-block hoverable">
-      <table class="table text-center">
-        <thead class="thead-inverse">
+  <div class="card wow fadeInUpBig z-depth-5" id="transparent">
+    <div class="card-block ">
+      <table class="table text-center" id="non-bordered-th">
+        <thead class="">
           <tr>
             <th class="text-center"><%= t('activerecord.models.train')%></th>
             <th class="text-center"><%= t('activerecord.models.route')%></th>

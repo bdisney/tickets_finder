@@ -1,33 +1,32 @@
 <div class="description">
-  <h2 class="h2-responsive wow fadeInLeft" data-wow-delay="0.3s"><%= t('.ticket') %></h2>
+  <h2 class="h2-responsive wow fadeInLeft" data-wow-delay="0.3s">
+    <%= t('.ticket') %> <i class="fa fa-ticket" aria-hidden="true"></i>
+  </h2>
   <hr class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
 </div>
 
-
-
-<div class="card hoverable wow fadeInUpBig">
+<div class="card text-dark z-depth-5 wow fadeInUpBig" id="transparent">
   <div class="card-block">
     <h4><%= t('.client_details') %></h4>
     <hr class="hr-dark">
     <p>
-      <span class="text-muted"><%= t('.client_name')%>:</span>
+      <span class=""><%= t('.client_name')%>:</span>
       <%= @ticket.user.full_name %></p>
     <p>
-      <span class="text-muted"><%= t('.ticket_created_at') %>:</span>
+      <span class=""><%= t('.ticket_created_at') %>:</span>
       <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %>
     </p>
 
     <br/>
 
     <h4><%= t('.passenger_details') %>:</h4>
-    <hr class="hr-dark">
     <p>
-      <span class="text-muted"><%= t('.passenger_name') %>:</span>
+      <span class=""><%= t('.passenger_name') %>:</span>
       <%= @ticket.passenger_name %>
     </p>
-    <p><span class="text-muted"><%= t('.passport_number') %>: </span><%= @ticket.passport_number %></p>
+    <p><span class=""><%= t('.passport_number') %>: </span><%= @ticket.passport_number %></p>
     <br/>
-    <table class="table text-center">
+    <table class="table text-center" id="non-bordered-th">
       <thead>
         <th class="text-center"><%= t('activerecord.models.train') %></th>
         <th class="text-center"><%= t('activerecord.models.route') %></th>
@@ -51,3 +50,4 @@
 </div>
 <br/>
 <%= link_to t('common.back'), tickets_path %>
+

@@ -3,10 +3,10 @@
     <div class="registration-form">
       <div class="flex-center">
         <!--Form with header-->
-        <div class="card">
+        <div class="card" style="border-radius: 10px">
           <div class="card-block" >
             <!--Header-->
-            <div class="form-header blue-gradient">
+            <div class="form-header  light-blue accent-4" style="border-radius: 5px">
               <h3><i class="fa fa-user"></i> <%= t('.sign_up') %>:</h3>
             </div>
 
@@ -36,11 +36,11 @@
             </div>
 
             <div class="text-center">
-              <button class="btn btn-indigo"><%= t('.sign_up') %></button>
+              <button class="btn btn-outline-info btn-rounded"><%= t('.sign_up') %></button>
               <hr>
               <fieldset class="form-group">
                 <input type="checkbox" id="checkbox1">
-                <label for="checkbox1"><%= t('.subscribe_me_to_the_newsletter') %></label>
+                <p class="text-muted"></p>
               </fieldset>
             </div>
           </div>

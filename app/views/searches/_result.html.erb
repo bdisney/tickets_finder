@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
 
-          <div class="card wow fadeInRight" id="transparent">
+          <div class="card wow fadeInRight z-depth-5" id="transparent">
             <div class="card-block wow fadeIn">
               <table class="table table-sm text-white text-center" id="non-bordered-th">
                 <thead >
@@ -34,8 +34,11 @@
                         <%= @arrival_station.title %><br/>
                         <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
                       </td>
-                      <td class="wow fadeInRightBig" data-wow-delay="0.3s">
-                        <%= link_to t('search.attributes.book'), ticket_path_helper(train), class: 'btn btn-default btn-sm' %>
+                      <td class="text-lg-left wow fadeInRight" data-wow-delay="0.9s">
+                        <%= link_to raw("<i class=\"fa fa-shopping-cart\"></i><span class=\"hidden-sm-down\"> Buy</span>"),
+                                    ticket_path_helper(train),
+                                    class: "text-success",
+                                    rel: "nofollow"%></a>
                       </td>
                     </tr>
                 <% end %>
