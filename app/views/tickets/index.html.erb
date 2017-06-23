@@ -1,27 +1,34 @@
-<h1>Мои билеты</h1>
+<div class="description">
+  <h2 class="h2-responsive wow fadeInLeft" data-wow-delay="0.3s"><%= t('.my_tickets') %></h2>
+  <hr class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
+</div>
 
 <% if @tickets.present? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Маршрут</th>
-        <th>Станция отправления</th>
-        <th>Станция прибытия</th>
-        <th colspan="2" class="text-right">Actions</th>
-      </tr>
-    </thead>
+  <div class="card wow fadeInUpBig z-depth-5" id="transparent">
+    <div class="card-block ">
+      <table class="table text-center" id="non-bordered-th">
+        <thead class="">
+          <tr>
+            <th class="text-center"><%= t('activerecord.models.train')%></th>
+            <th class="text-center"><%= t('activerecord.models.route')%></th>
+            <th class="text-center"><%= t('tickets.attributes.departure_station') %></th>
+            <th class="text-center"><%= t('tickets.attributes.arrival_station') %></th>
+            <th colspan="2" class="text-right"><%= t('common.actions') %></th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <%= render @tickets %>
-    </tbody>
-  </table>
+        <tbody>
+          <%= render @tickets %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 <% else %>
-  <p>вы еще не купили ни одного билета.</p>
+  <p class="text-white"><%= t('tickets.attributes.empty') %></p>
 <% end %>
 
-
-<p class="nav-inner">
-  <%= link_to 'Back', root_path %>
+<br/>
+<p class="nav-inner wow fadeInUpBig">
+  <%= link_to t('common.back'), root_path %>
 </p>

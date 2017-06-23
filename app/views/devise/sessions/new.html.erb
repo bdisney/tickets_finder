@@ -1,26 +1,46 @@
-<h2>Log in</h2>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %><br /><br />
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="flex-center">
+      <div class="login-form">
+      <!--Form with header-->
+      <div class="card z-depth-5" style="width: 294px; border-radius: 10px">
+        <div class="card-block">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+          <!--Header-->
+          <div class="form-header  cyan darken-3" style="border-radius: 5px">
+            <h3><i class="fa fa-lock"></i> <%= t('.log_in') %>:</h3>
+          </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <!--Body-->
+          <div class="md-form">
+            <i class="fa fa-envelope prefix"></i>
+            <%= f.email_field :email, class: "form-control", id: "form2" %>
+
+            <label for="form2" class="text-white"><%= t('.your_email') %></label>
+          </div>
+
+          <div class="md-form">
+            <i class="fa fa-lock prefix"></i>
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "form4" %>
+            <label for="form4" class="text-white"><%= t('.your_password') %></label>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-rounded btn-outline-info" value="Log in"><%= t('.log_in') %></button>
+          </div>
+
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer">
+          <div class="options text-right">
+            <p><%= t('.not_a_member') %> <a href="<%= new_user_registration_path %>" rel="nofollow"><%= t('.sign_up') %></a></p>
+            <p><%= t('.forgot') %> <a href="<%= new_password_path(resource_name) %>" rel="nofollow"><%= t('.password') %></a></p>
+            <p><%= t('.did_not_receive') %> <a href="<%= new_confirmation_path(resource_name) %>" rel="nofollow"><%= t('.instructions') %></a></p>
+          </div>
+        </div>
+
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

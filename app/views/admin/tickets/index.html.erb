@@ -1,13 +1,15 @@
-<h1>Билеты</h1>
-<table class="table">
-  <thead>
+<h1 class="h1-responsive" data-wow-delay="0.3s"><%= t('.tickets')%></h1>
+<hr class="hr-dark">
+
+<table class="table text-center" id="non-bordered-th">
+  <thead class="">
     <tr>
-      <th>Клиент</th>
-      <th>Поезд</th>
-      <th>Маршрут</th>
-      <th>Станция отправления</th>
-      <th>Станция прибытия</th>
-      <th colspan="2" class="text-right">Actions</th>
+      <th class="text-center"><%= t('admin.tickets.attributes.client_name') %></th>
+      <th class="text-center"><%= t('admin.tickets.attributes.train_number') %></th>
+      <th class="text-center"><%= t('admin.tickets.attributes.route') %></th>
+      <th class="text-center"><%= t('admin.tickets.attributes.departure_station') %></th>
+      <th class="text-center"><%= t('admin.tickets.attributes.arrival_station') %></th>
+      <th colspan="2" class="text-right"><%= t('common.actions') %></th>
     </tr>
   </thead>
   <tbody>
@@ -16,4 +18,4 @@
 </table>
 
 <br/>
-<%= link_to 'Новый билет', new_admin_ticket_path %>
+<%= link_to t('common.add'), search_path %>

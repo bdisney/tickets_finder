@@ -1,67 +1,81 @@
+<h1 class="h1-responsive" data-wow-delay="0.3s">
+  <%= t('activerecord.models.route') %>
+  <strong><%= @route.title %></strong>
+</h1>
+<hr class="hr-dark">
+<br/>
 <p>
-  <strong>Название:</strong>
-  <%= @route.title %>
-</p>
-
-<p>
-  <strong>Поезда на маршруте:</strong>
+  <strong><%= t('.trains_on_route')%>:</strong>
   <% if @route.trains.present? %>
+    <ul>
       <% @route.trains.each do |train|  %>
-        <ul>
-          <li><%= train.number %></li>
-        </ul>
-    <% end %>
+        <li>
+          <%= link_to admin_train_path(train) do %>
+              <span><i class="fa fa-subway" aria-hidden="true"></i> <%= train.number %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
 <% else %>
-    Поездов на маршруте нет.
+    <%= t('common.empty') %>
 <% end %>
 </p>
 
 <p>
-  <strong>Станции в маршруте: </strong>
+  <strong class="flex-center"><%= t('.routes_railway_stations') %>: </strong>
   <% if @route.railway_stations.present? %>
     <div class="row">
-      <div class="col-md-6">
-        <table class="table">
-          <thead>
-            <th>Станция</th>
-            <th colspan="2">Позиция</th>
-            <th>Время прибытия</th>
-            <th>Время отправления</th>
-            <th></th>
-          </thead>
-          <tbody>
-            <% @route.railway_stations.sorted.each do |station| %>
-              <tr>
-                <td><%= station.title %></td>
-                <td>
-                  <%= form_tag update_position_admin_railway_station_path(station),
-                               method: :patch do %>
-                      <%= number_field_tag :position, station.check_station_attr(@route, :position) %>
-                      <%= hidden_field_tag :route_id, @route.id %></td>
-                      <td><%= submit_tag 'Изменить' %></td>
-                  <% end %>
-                  <%= form_tag update_time_admin_railway_station_path(station),
-                               method: :patch do %>
+      <div class="card">
+        <div class="card-block">
+          <table class="table" id="non-bordered-th">
+            <thead>
+              <th><%= t('admin.routes.attributes.title')%></th>
+              <th colspan="2"><%= t('admin.routes.attributes.position')%></th>
+              <th><%= t('admin.routes.attributes.arrival_time')%></th>
+              <th><%= t('admin.routes.attributes.departure_time')%></th>
+              <th></th>
+            </thead>
+            <tbody>
+              <% @route.railway_stations.sorted.each do |station| %>
+                <tr>
+                  <td><%= station.title %></td>
+                  <td>
+                    <%= form_tag update_position_admin_railway_station_path(station),
+                                 method: :patch do %>
+                        <%= number_field_tag :position, station.check_station_attr(@route, :position) %>
+                        <%= hidden_field_tag :route_id, @route.id %></td>
+                        <td>
+                          <button type="submit" class="btn btn-default btn-sm">
+                            <%= t('common.update') %>
+                          </button>
+                        </td>
+                    <% end %>
+                    <%= form_tag update_time_admin_railway_station_path(station),
+                                 method: :patch do %>
 
-                      <td><%= time_field_tag :arrival_time,
-                                             station.check_station_attr(@route, :arrival_time) %></td>
-                      <td><%= time_field_tag :departure_time,
-                                             station.check_station_attr(@route, :departure_time) %></td>
-                          <%= hidden_field_tag :route_id, @route.id %>
-                      <td><%= submit_tag 'Изменить' %></td>
-                  <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+                        <td><%= time_field_tag :arrival_time,
+                                               station.check_station_attr(@route, :arrival_time) %></td>
+                        <td><%= time_field_tag :departure_time,
+                                               station.check_station_attr(@route, :departure_time) %></td>
+                            <%= hidden_field_tag :route_id, @route.id %>
+                        <td>
+                          <button type="submit" class="btn btn-default btn-sm">
+                            <%= t('common.update') %>
+                          </button>
+                        </td>
+                    <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   <% else %>
-    Не назначены.
+    <%= t('common.empty') %>
   <% end %>
 </p>
+<br/>
 
-
-
-<%= link_to 'Edit', edit_admin_route_path(@route) %> |
-<%= link_to 'Back', admin_routes_path %>
+<%= link_to t('common.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('common.back'), admin_routes_path %>

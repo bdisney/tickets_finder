@@ -1,6 +1,7 @@
-<h1>Редактировать билет</h1>
+<h1 class="h1-responsive" data-wow-delay="0.3s"><%= t('.edit_ticket') %></h1>
+<hr class="hr-dark">
 
 <%= render 'form', ticket: @ticket %>
 <br/>
-<%= link_to 'Show', admin_ticket_path(@ticket) %> |
-<%= link_to 'Back', admin_tickets_path %>
+<%= link_to t('common.show'), admin_ticket_path(@ticket) %> |
+<%= link_to t('common.back'), admin_tickets_path %>

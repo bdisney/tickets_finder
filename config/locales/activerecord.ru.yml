@@ -1,0 +1,43 @@
+ru:
+  activerecord:
+    models:
+      railway_station: 'Станция'
+      train: 'Поезд'
+      route: 'Маршрут'
+      ticket: 'Билет'
+      user: 'Пользователь'
+    attributes:
+      railway_station:
+        title: 'Наименование'
+      train:
+        number: 'Номер'
+        current_station: 'Текущая станция'
+      route:
+        title: 'Название'
+      carriage:
+        top_seats: 'Верхние места'
+        bottom_seats: 'Нижние места'
+        side_top_seats: 'Верхние боковые места'
+        side_bottom_seats: 'Нижние боковые места'
+        seats: 'Сидячие места'
+      ticket:
+        passport_number: 'Номер паспорта'
+        passenger_name: 'Имя пассажира'
+      user:
+        first_name: "Имя"
+        last_name: "Фамилия"
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+        too_short: 'слишком короткое'
+        too_long: 'слишком длинное'
+      models:
+        railway_station:
+          attributes:
+            title:
+              blank: 'должно быть указано'
+        carriage:
+          greater_than: 'не должны быть пустыми'
+        ticket:
+          invalid: 'не соответствует формату серия номер'
+

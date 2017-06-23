@@ -1,5 +1,6 @@
-<h1>Создать поезд</h1>
+<h1 class="h1-responsive" data-wow-delay="0.3s"><%= t('.new_train') %></h1>
+<hr class="hr-dark">
 
 <%= render 'form', train: @train %>
 <br/>
-<%= link_to 'Back', admin_trains_path %>
+<%= link_to t('common.back'), admin_trains_path %>

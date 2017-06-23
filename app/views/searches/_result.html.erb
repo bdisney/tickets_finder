@@ -1,0 +1,52 @@
+<% if @trains.present? %>
+    <div class="" id="test">
+      <div class="description">
+        <h2 class="h2-responsive wow fadeInUpBig">
+          <p class="text-white"><%= t('search.show.search_result') %>:</p>
+        </h2>
+        <hr class="hr-dark wow fadeInLeftBig" data-wow-delay="0.3s">
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+          <div class="card wow fadeInRight z-depth-5" id="transparent">
+            <div class="card-block wow fadeIn">
+              <table class="table table-sm text-white text-center" id="non-bordered-th">
+                <thead >
+                <th class="text-center"><%= t('search.attributes.train_number') %></th>
+                <th class="text-center"><%= t('search.attributes.route') %></th>
+                <th class="text-center"><%= t('search.attributes.railway_station') %>,
+                  <br/> <%= t('search.attributes.departure_time') %></th>
+                <th class="text-center"><%= t('search.attributes.railway_station')%>,
+                  <br/><%= t('search.attributes.arrival_time') %> </th>
+                <th ></th>
+                </thead>
+                <tbody>
+                <% @trains.each do |train| %>
+                    <tr>
+                      <td><%= train.number %></td>
+                      <td class="text-center"><%= train.route.title %></td>
+                      <td class="text-center">
+                        <%= @departure_station.title %><br/>
+                        <%= @departure_station.check_station_attr(train.route, :departure_time) %>
+                      </td>
+                      <td class="text-center">
+                        <%= @arrival_station.title %><br/>
+                        <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
+                      </td>
+                      <td class="text-lg-left wow fadeInRight" data-wow-delay="0.9s">
+                        <%= link_to raw("<i class=\"fa fa-shopping-cart\"></i><span class=\"hidden-sm-down\"> Buy</span>"),
+                                    ticket_path_helper(train),
+                                    class: "text-success",
+                                    rel: "nofollow"%></a>
+                      </td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

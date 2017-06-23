@@ -1,12 +1,13 @@
-<h1>Маршруты:</h1>
+<h1 class="h1-responsive" data-wow-delay="0.3s"><%= t('.routes')%></h1>
+<hr class="hr-dark">
 
 <div class="row">
   <div class="col-md-6">
-    <table class="table">
+    <table class="table" id="non-bordered-th">
       <thead>
       <tr>
-        <th>Наименование</th>
-        <th colspan="3" class="text-right">Actions</th>
+        <th><%= t('admin.routes.attributes.title')%></th>
+        <th colspan="3" class="text-right"><%= t('common.actions')%></th>
       </tr>
       </thead>
 
@@ -19,4 +20,4 @@
 
 <br>
 
-<%= link_to 'Новый маршрут', new_admin_route_path %>
+<%= link_to t('common.add'), new_admin_route_path %>

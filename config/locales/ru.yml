@@ -1,0 +1,180 @@
+ru:
+  layouts:
+    application:
+      search: 'Поиск'
+  shared:
+    user_nav_bar:
+      my_tickets: 'Мои билеты'
+    nav_bar_icons:
+      sign_in: 'Войти'
+      sign_up: 'Регистрация'
+      hello: 'Привет'
+      log_out: 'Выйти'
+  common:
+    back: 'Назад'
+    edit: 'Редакитровать'
+    update: 'Изменить'
+    show: 'Посмотреть'
+    actions: 'Действия'
+    add: 'Добавить'
+    empty: 'не назначены'
+  searches:
+    create:
+      warning: 'По вашему запросу ничего не найдено. Попробуйте изменить условия'
+  search:
+    show:
+      tickets_search: 'Поиск билетов'
+      search_result: 'Результаты поиска'
+      submit: 'Мне повезет!'
+    attributes:
+      departure_station: 'Станция отправления'
+      arrival_station: 'Станция назначения'
+      train_number: 'Номер поезда'
+      route: 'Маршрут'
+      railway_station: 'Станция'
+      departure_time: 'время отправления'
+      arrival_time: 'время прибытия'
+      book: 'Забронировать'
+  tickets:
+    index:
+      my_tickets: 'Мои билеты'
+    new:
+      buy_ticket: 'Купить билет'
+      buy: 'Купить'
+    show:
+      ticket: 'Билет'
+      client_details: 'Информация о клиенте'
+      client_name: 'Имя'
+      ticket_created_at: 'Дата и время покупки билета'
+      passenger_details: 'Сведения о пассажире'
+      passenger_name: 'Имя пассажира'
+      passport_number: 'Номер паспорта'
+    create:
+      notice: 'Билет создан'
+    update:
+      notice: 'Билет обновлен'
+    destroy:
+      notice: 'Билет удален'
+    attributes:
+      route: 'Маршрут'
+      departure_station: 'Станция отправления'
+      arrival_station: 'Станция назначения'
+      empty: 'Вы еще ничего не приобрели'
+  admin:
+    railway_stations:
+      index:
+        railway_stations: 'Станции'
+      new:
+        new_railway_station: 'Новая станция'
+      create:
+        notice: 'Станция была создана'
+      edit:
+        edit_railway_station: 'Редактировать станцию'
+      update:
+        notice: 'Станция успешно обновлена'
+      update_position:
+        notice: 'Позиция обновлена'
+      update_time:
+        notice: 'Расписание обновлено'
+      show:
+        railway_station: 'Станция'
+      destroy:
+        notice: 'Станция удалена'
+      form:
+        submit: '%{action}'
+      attributes:
+        title: 'Наименование'
+    routes:
+      index:
+        routes: 'Маршруты'
+      new:
+        new_route: 'Новый маршрут'
+      show:
+        trains_on_route: 'Поезда на маршруте'
+        routes_railway_stations: 'Станции в маршруте'
+      edit:
+        route_editing: 'Редактирование маршрута'
+      create:
+        notice: 'Маршрут создан'
+      update:
+        notice: 'Маршрут обновлен'
+      destroy:
+        notice: 'Маршрут удален'
+      form:
+        submit: '%{action}'
+      attributes:
+        title: 'Наименование'
+        railway_stations: 'Станции'
+        position: 'Позиция'
+        arrival_time: 'Время прибытия'
+        departure_time: 'Время отправления'
+    trains:
+      index:
+        trains: 'Поезда'
+      new:
+        new_train: 'Новый поезд'
+      edit:
+        edit_train: 'Редактировать поезд'
+      show:
+        add_carriage: 'Добавить вагон'
+        carriage_number: 'Номер вагона'
+      create:
+        notice: 'Поезд успешно создан'
+      update:
+        notice: 'Поезд обновлен'
+      destroy:
+        notice: 'Поезд удален'
+      form:
+        route: 'Маршрут'
+        order_from_end: 'Нумерация вагонов с хвоста'
+        submit: '%{action}'
+      attributes:
+        number: 'номер'
+        current_station: 'Текущая станция'
+        route: 'Маршрут'
+    tickets:
+      index:
+        tickets: 'Билеты'
+      edit:
+        edit_ticket: 'Редактировать билет'
+      form:
+        submit: '%{action}'
+      create:
+        notice: 'Билет создан'
+      update:
+        notice: 'Билет обновлен'
+      destroy:
+        notice: 'Билет удален'
+      attributes:
+        client_name: 'Имя клиента'
+        train_number: 'Номер поезда'
+        route: 'Маршрут'
+        departure_station: 'Станция отправления'
+        arrival_station: 'Станция назначения'
+    carriages:
+      index:
+      new:
+        new_carriage: 'Новый вагон'
+      edit:
+        edit_carriage: 'Редактировать вагон'
+      create:
+        notice: 'Вагон добавлен'
+      update:
+        notice: 'Вагон обновлен'
+      destroy:
+        notice: 'Вагон удален'
+      show:
+        carriage: 'Вагон'
+        attached_to_the_train: 'Прикреплен к поезду'
+      form:
+        submit: '%{action}'
+      attributes:
+        train: 'Выберите поезд'
+        carriage_type: 'Тип вагона'
+        seats_qty: 'Кол-во мест'
+        seats_by_type: 'Мест по типу'
+        top_seats: 'Верхние'
+        bottom_seats: 'Нижние'
+        side_top_seats: 'Верхние, боковые'
+        side_bottom_seats: 'Нижние, боковые'
+        seats: 'Сидячие'

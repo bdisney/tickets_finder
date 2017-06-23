@@ -1,56 +1,41 @@
-<h1>Поиск билета:</h1>
+<div class="description">
+  <h2 class="h2-responsive wow fadeInLeft" data-wow-delay="0.3s"><%= t('search.show.tickets_search')%></h2>
+  <hr class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
+</div>
 
-<%= form_tag search_path, role: 'form'  do %>
-  <div class="row">
-    <div class="col-md-6">
-      <%= label_tag :departure_station, 'Станция отправления' %>
-      <%= select_tag :departure_station,
-                     options_from_collection_for_select(RailwayStation.all, :id, :title),
-                     class: 'form-control' %>
+<%= form_tag search_path, role: 'form', remote: true  do %>
+    <div class="card z-depth-5" id="transparent">
+      <div class="card-block">
+        <div class="row">
+          <div class="col-md-4">
+            <h5 class="text-white"><%=  t('search.attributes.departure_station') %></h5>
+            <%= select_tag :departure_station,
+                           options_from_collection_for_select(RailwayStation.all, :id, :title),
+                           class: "mdb-select colorful-select dropdown-success" %>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-white"><%= t('search.attributes.arrival_station') %></h5>
+            <%= select_tag :arrival_station,
+                             options_from_collection_for_select(RailwayStation.all, :id, :title),
+                             class: "mdb-select colorful-select dropdown-success" %>
+          </div>
+          <div class="col-md-4 text-center center-on-small-only ">
+            <br/>
+            <button type="submit" class="btn btn-success btn-rounded btn-large waves-effect" style="width: 170px"> <%= t('search.show.submit') %> </button>
+           </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <%= label_tag :arrival_station, 'Станция прибытия' %>
-      <%= select_tag :arrival_station,
-                     options_from_collection_for_select(RailwayStation.all, :id, :title),
-                     class: 'form-control' %>
-    </div>
-  </div>
-    <br/>
-  <div class="">
-    <%= submit_tag 'Найти', class: 'btn btn-default' %>
-  </div>
-<% end %>
 
-<% if @trains.present? %>
-  <br/>
-  <p>Результаты поиска:</p>
-
-  <table class="table">
-    <thead>
-      <th>Номер</th>
-      <th class="text-center">Маршрут</th>
-      <th class="text-center">Станция, <br/> время отправления</th>
-      <th class="text-center">Станция, <br/> время прибытия</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <% @trains.each do |train| %>
-        <tr>
-          <td><%= train.number %></td>
-          <td class="text-center"><%= train.route.title %></td>
-          <td class="text-center">
-            <%= @departure_station.title %><br/>
-            <%= @departure_station.check_station_attr(train.route, :departure_time) %>
-          </td>
-          <td class="text-center">
-            <%= @arrival_station.title %><br/>
-            <%= @arrival_station.check_station_attr(train.route, :arrival_time) %>
-          </td>
-          <td class="text-right">
-            <%= link_to 'Buy', ticket_path_helper(train), class: 'btn btn-default btn-sm' %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 <% end %>
+<div id="search_result">
+  <%=render 'result' %>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    $('.mdb-select').material_select();
+  });
+</script>
+

@@ -3,13 +3,13 @@
 
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :train, 'Выберите поезд', class: "text-muted" %>
+        <%= f.label :train, t('admin.carriages.attributes.train'), class: "text-muted" %>
         <%= f.collection_select :train_id, Train.all, :id, :number, {},
                                 class: "form-control" %>
       </div>
 
       <div class="col-md-6">
-        <%= f.label :varriation, 'Тип вагона', class: "text-muted" %><br>
+        <%= f.label :varriation, t('admin.carriages.attributes.carriage_type'), class: "text-muted" %><br>
         <%= f.select :type, Carriage::TYPES.map { |type| [ type[1], type[0] ] }, {},
                      class: "form-control" %>
       </div>
@@ -17,11 +17,11 @@
     <br />
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :top_seats, 'Кол-во верхник мест', class: "text-muted" %>
+        <%= f.label :top_seats, t('admin.carriages.attributes.top_seats'), class: "text-muted" %>
         <%= f.text_field :top_seats, class: "form-control" %>
       </div>
       <div class="col-md-6">
-        <%= f.label :bottom_seats, 'Кол-во нижних мест', class: "text-muted" %>
+        <%= f.label :bottom_seats, t('admin.carriages.attributes.bottom_seats'), class: "text-muted" %>
         <%= f.text_field :bottom_seats, class: "form-control" %>
       </div>
     </div>
@@ -29,11 +29,11 @@
 
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :side_top_seats, 'Кол-во верхних боковых мест', class: "text-muted" %>
+        <%= f.label :side_top_seats, t('admin.carriages.attributes.side_top_seats'), class: "text-muted" %>
         <%= f.text_field :side_top_seats, class: "form-control" %>
       </div>
       <div class="col-md-6">
-        <%= f.label :side_bottom_seats, 'Кол-во нижних боковых мест', class: "text-muted" %>
+        <%= f.label :side_bottom_seats, t('admin.carriages.attributes.side_bottom_seats'), class: "text-muted" %>
         <%= f.text_field :side_bottom_seats, class: "form-control" %>
       </div>
     </div>
@@ -41,13 +41,14 @@
 
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :seats, 'Кол-во сидячих мест', class: "text-muted" %>
+        <%= f.label :seats, t('admin.carriages.attributes.seats'), class: "text-muted" %>
         <%= f.text_field :seats, class: "form-control" %>
       </div>
     </div>
 
     <br />
     <div class="actions">
-      <%= f.submit "#{ carriage.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-default" %>
+      <%= f.submit t('.submit', action: carriage.new_record? ? 'Создать' : 'Изменить'),
+                   class: "btn btn-default" %>
     </div>
 <% end %>

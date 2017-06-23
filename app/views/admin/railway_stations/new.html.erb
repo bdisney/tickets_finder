@@ -1,6 +1,7 @@
-<h1>Новая станция</h1>
+<h1 class="h1-responsive" data-wow-delay="0.3s"><%= t('.new_railway_station')%></h1>
+<hr class="hr-dark">
 
 <%= render 'form', railway_station: @railway_station %>
 <br/>
 
-<%= link_to 'Back', admin_railway_stations_path %>
+<%= link_to t('common.back'), admin_railway_stations_path %>

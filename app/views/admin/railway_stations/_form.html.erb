@@ -2,15 +2,14 @@
     <%= render 'shared/errors_messages', resource: railway_station %>
     <div class="row">
       <div class="col-md-6">
-      <%= f.label :title, 'Название' %>
-      <%= f.text_field :title, class: "form-control" %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "md-form" %>
       </div>
     </div>
 
     <br>
 
-    <div class="actions">
-      <%= f.submit "#{ railway_station.new_record? ? 'Создать' : 'Изменить' }",
-                   class: "btn btn-default" %>
-    </div>
+    <button type="submit" class="btn btn-default">
+      <%= t('.submit', action: @railway_station.new_record? ? 'Создать' : 'Изменить') %>
+    </button>
 <% end %>

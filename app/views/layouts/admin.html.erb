@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>TicketsFinder</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap core CSS -->
+  <%= stylesheet_link_tag 'bootstrap.min.css' %>
+
+  <!-- Material Design Bootstrap -->
+  <%= stylesheet_link_tag 'mdb.min.css' %>
+  <%= stylesheet_link_tag 'admin.css' %>
+</head>
+<body>
+<!--Navigation & Intro-->
+<header>
+  <!--Navbar-->
+  <nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-brand">TicketsFINDER</div>
+      <div class="collapse navbar-collapse" id="navbarNav1">
+        <ul class="navbar-nav mr-auto">
+          <%= render 'shared/user_nav_bar' %>
+          <% if user_signed_in? %>
+              <%= render 'shared/admin_nav_bar' if current_user.admin? %>
+          <% end %>
+        </ul>
+
+        <!--Navbar icons-->
+        <ul class="nav navbar-nav nav-flex-icons ml-auto">
+          <%= render 'shared/nav_bar_icons' %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--/.Navbar-->
+</header>
+
+<!--Mask-->
+<main>
+
+
+<div class="container">
+
+      <%= render 'shared/flash_notices' %>
+      <%= yield %>
+</div>
+</main>
+
+<!--/.Mask-->
+
+<!-- SCRIPTS -->
+
+<!-- JQuery -->
+<%= javascript_include_tag 'jquery-3.1.1.js' %>
+
+<!-- Tooltips -->
+<%= javascript_include_tag 'tether.min.js' %>
+
+<!-- Bootstrap core JavaScript -->
+<%= javascript_include_tag 'bootstrap.min.js' %>
+
+<!-- MDB core JavaScript -->
+<%= javascript_include_tag 'mdb.min.js' %>
+
+<script>
+    new WOW().init();
+</script>
+<script>
+    $(document).ready(function() {
+        $('.mdb-select').material_select();
+    });
+</script>
+</body>
+</html>

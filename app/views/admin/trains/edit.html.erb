@@ -1,6 +1,7 @@
-<h1>Редактировать поезд</h1>
+<h1 class="h1-responsive" data-wow-delay="0.3s"><%= t('.edit_train') %></h1>
+<hr class="hr-dark">
 
 <%= render 'form', train: @train %>
 <br/>
-<%= link_to 'Show', admin_train_path(@train) %> |
-<%= link_to 'Back', admin_trains_path %>
+<%= link_to t('common.show'), admin_train_path(@train) %> |
+<%= link_to t('common.back'), admin_trains_path %>

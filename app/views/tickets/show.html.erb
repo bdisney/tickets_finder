@@ -1,39 +1,53 @@
-<h1>Билет</h1>
-
-<div class="">
-  <h4>Детали заказа</h4>
-  <p><span class="text-muted">Имя клиента:</span> <%= @ticket.user.full_name %></p>
-  <p>
-    <span class="text-muted">Дата и время покупки билета:</span>
-    <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %>
-  </p>
-  <h4>Сведения о пассажире:</h4>
-  <p>
-    <span class="text-muted">Имя пассажира:</span>
-    <%= @ticket.passenger_name %>
-  </p>
-  <p><span class="text-muted">Номер паспорта: </span><%= @ticket.passport_number %></p>
-  <br/>
-  <table class="table">
-    <thead>
-      <th>Поезд</th>
-      <th>Маршрут</th>
-      <th>Отправление</th>
-      <th>Прибытие</th>
-    </thead>
-    <tbody>
-      <td><%= @ticket.train.number %></td>
-      <td><%= @ticket.train.route.title %></td>
-      <td>
-        <%= @ticket.start_station.title %><br/>
-        <%= @ticket.start_station.check_station_attr(@ticket.train.route, :departure_time) %>
-      </td>
-      <td>
-        <%= @ticket.last_station.title %><br/>
-        <%= @ticket.last_station.check_station_attr(@ticket.train.route, :arrival_time) %>
-      </td>
-    </tbody>
-  </table>
+<div class="description">
+  <h2 class="h2-responsive wow fadeInLeft" data-wow-delay="0.3s">
+    <%= t('.ticket') %> <i class="fa fa-ticket" aria-hidden="true"></i>
+  </h2>
+  <hr class="hr-dark wow fadeInLeft" data-wow-delay="0.3s">
 </div>
 
-<%= link_to 'Back', tickets_path %>
+<div class="card text-dark z-depth-5 wow fadeInUpBig" id="transparent">
+  <div class="card-block">
+    <h4><%= t('.client_details') %></h4>
+    <hr class="hr-dark">
+    <p>
+      <span class=""><%= t('.client_name')%>:</span>
+      <%= @ticket.user.full_name %></p>
+    <p>
+      <span class=""><%= t('.ticket_created_at') %>:</span>
+      <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %>
+    </p>
+
+    <br/>
+
+    <h4><%= t('.passenger_details') %>:</h4>
+    <p>
+      <span class=""><%= t('.passenger_name') %>:</span>
+      <%= @ticket.passenger_name %>
+    </p>
+    <p><span class=""><%= t('.passport_number') %>: </span><%= @ticket.passport_number %></p>
+    <br/>
+    <table class="table text-center" id="non-bordered-th">
+      <thead>
+        <th class="text-center"><%= t('activerecord.models.train') %></th>
+        <th class="text-center"><%= t('activerecord.models.route') %></th>
+        <th class="text-center"><%= t('search.attributes.departure_station') %></th>
+        <th class="text-center"><%= t('search.attributes.arrival_station') %></th>
+      </thead>
+      <tbody>
+        <td><%= @ticket.train.number %></td>
+        <td><%= @ticket.train.route.title %></td>
+        <td>
+          <%= @ticket.start_station.title %><br/>
+          <%= @ticket.start_station.check_station_attr(@ticket.train.route, :departure_time) %>
+        </td>
+        <td>
+          <%= @ticket.last_station.title %><br/>
+          <%= @ticket.last_station.check_station_attr(@ticket.train.route, :arrival_time) %>
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br/>
+<%= link_to t('common.back'), tickets_path %>
+

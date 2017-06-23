@@ -1,16 +1,103 @@
 html,
-body {
-    margin:0;
-    padding-top: 30px;
-    height:100%;
+body,
+header,
+.view {
+    height: 100%;
+}
+
+
+/* Navigation*/
+
+.navbar {
+    background-color: transparent;
+}
+
+.top-nav-collapse {
+    background-color: #2E2E2E;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #2E2E2E;
+    }
+}
+/*Intro*/
+
+.view {
+    padding-top: 0%;
+    background: url("railway4.jpeg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+@media (max-width: 768px) {
+    .full-bg-img,
+    .view {
+        height: auto;
+        position: relative;
+    }
+}
+
+.description {
+    padding-top: 10%;
+    padding-bottom: 3rem;
+    color: #fff
+}
+
+#transparent {
+    z-index: 3;
+    background: rgba(0, 188, 212, 0.5) ;
+    padding: 10px 0 3px 0 ;
+    position:relative;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 40px;
+    border: black 1px solid;
+}
+
+.login-form, .registration-form {
+    padding-top: 20%;
+}
+
+.dropdown-content {
+    border: black 1px solid;
+    border-radius: 10px;
+    font-size: larger;
+}
+
+#non-bordered-th th {
+    border-top: none;
+    font-weight: 500;
+    color: white;
 }
 
 .footer {
+    padding-bottom: 0%;
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     padding: 1rem;
-    background-color: #efefef;
+    background-color: transparent;
     text-align: center;
+    padding-bottom: 0%;
+    margin-bottom: 0;
+}
+
+#ticket_passenger_name, #ticket_passport_number {
+    border-radius: 10px;
+    border: black 1px solid;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white  inset;
+    -webkit-text-fill-color: #333;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white  inset;
+    -webkit-text-fill-color: #333;
 }

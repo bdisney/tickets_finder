@@ -1,5 +1,6 @@
-<h1>Новый маршрут.</h1>
+<h1 class="h1-responsive" data-wow-delay="0.3s"><%= t('admin.routes.new.new_route')%></h1>
+<hr class="hr-dark">
 
 <%= render 'form', route: @route %>
 <br/>
-<%= link_to 'Back', admin_routes_path %>
+<%= link_to t('common.back'), admin_routes_path %>
