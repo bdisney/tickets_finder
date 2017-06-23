@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>TicketsFinder</title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -48,19 +49,28 @@
           </div>
         </div>
       </nav>
+
+      <!--Mask-->
+      <div class="view hm-black-strong">
+        <div class="full-bg-img">
+          <div class="container">
+
+              <%= render 'shared/flash_notices' %>
+              <%= yield %>
+
+          </div>
+        </div>
+      </div>
+      <!--/.Mask-->
       <!--/.Navbar-->
     </header>
 
-    <!--Mask-->
-    <div class="view hm-black-strong">
-      <div class="full-bg-img">
-        <div class="container">
-          <%= render 'shared/flash_notices' %>
-          <%= yield %>
-        </div>
-      </div>
+
+    <div class="container">
+      <%= render 'shared/footer' %>
     </div>
-    <!--/.Mask-->
+
+
 
     <!-- SCRIPTS -->
 

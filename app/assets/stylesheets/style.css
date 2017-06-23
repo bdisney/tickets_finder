@@ -1,8 +1,11 @@
 html,
 body,
+header,
 .view {
     height: 100%;
 }
+
+
 /* Navigation*/
 
 .navbar {
@@ -22,11 +25,12 @@ body,
 
 .view {
     padding-top: 0%;
-    background: url("railway2.jpeg")no-repeat center center fixed;
+    background: url("railway4.jpeg")no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
 }
 
 @media (max-width: 768px) {
@@ -38,7 +42,7 @@ body,
 }
 
 .description {
-    padding-top: 15%;
+    padding-top: 10%;
     padding-bottom: 3rem;
     color: #fff
 }
@@ -56,6 +60,19 @@ body,
 
 .login-form, .registration-form {
     padding-top: 20%;
-
 }
+
+.footer {
+    padding-bottom: 0%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: transparent;
+    text-align: center;
+    padding-bottom: 0%;
+    margin-bottom: 0;
+}
+
 
