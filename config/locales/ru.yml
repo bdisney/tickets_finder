@@ -1,4 +1,15 @@
 ru:
+  layouts:
+    application:
+      search: 'Поиск'
+  shared:
+    user_nav_bar:
+      my_tickets: 'Мои билеты'
+    nav_bar_icons:
+      sign_in: 'Войти'
+      sign_up: 'Регистрация'
+      hello: 'Привет'
+      log_out: 'Выйти'
   common:
     back: 'Назад'
     edit: 'Редакитровать'
