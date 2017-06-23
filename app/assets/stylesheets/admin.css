@@ -28,4 +28,6 @@ main {
 
 #non-bordered-th th {
     border-top: none;
+    font-weight: 500;
+    color: white;
 }
