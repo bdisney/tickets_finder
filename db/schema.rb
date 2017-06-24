@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619140335) do
+ActiveRecord::Schema.define(version: 20170624104705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170619140335) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "train_id"
+    t.index ["id", "type"], name: "index_carriages_on_id_and_type", using: :btree
     t.index ["train_id"], name: "index_carriages_on_train_id", using: :btree
   end
 
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170619140335) do
     t.integer "position",           default: 0
     t.time    "arrival_time"
     t.time    "departure_time"
+    t.index ["railway_station_id", "route_id"], name: "index_unique_pair_of_stations_and_routes", unique: true, using: :btree
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id", using: :btree
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id", using: :btree
   end
