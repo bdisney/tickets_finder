@@ -180,3 +180,16 @@ ru:
         side_top_seats: 'Верхние, боковые'
         side_bottom_seats: 'Нижние, боковые'
         seats: 'Сидячие'
+  tickets_mailer:
+    booking_confirmation:
+      thanks_for_booking: 'Спасибо за покупку билета в TicketFINDER'
+      greeting: 'Здравствуйте, %{recipient}!'
+      thank_you: 'Спасибо за Ваш заказ!'
+      order_details: 'Детали Вашего заказа:'
+      ticket_details: 'Информация о билете'
+      view: 'Посмотреть билет'
+      view_all: 'Посмотреть все билеты'
+    booking_cancellation:
+      booking_cancellation: 'Отмена покупки билета в TicketsFINDER'
+      greeting: 'Здравствуйте, %{recipient}!'
+      message: 'Вы только что отменили бронь Вашего билета'
