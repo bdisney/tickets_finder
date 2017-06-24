@@ -8,13 +8,13 @@
       <div class="card-block">
         <div class="row">
           <div class="col-md-4">
-            <h5 class="text-white"><%=  t('search.attributes.departure_station') %></h5>
+            <h5 class="text-white"><%=  t('search.attributes.from') %>:</h5>
             <%= select_tag :departure_station,
                            options_from_collection_for_select(RailwayStation.all, :id, :title),
                            class: "mdb-select colorful-select dropdown-success" %>
           </div>
           <div class="col-md-4">
-            <h5 class="text-white"><%= t('search.attributes.arrival_station') %></h5>
+            <h5 class="text-white"><%= t('search.attributes.to') %>:</h5>
             <%= select_tag :arrival_station,
                              options_from_collection_for_select(RailwayStation.all, :id, :title),
                              class: "mdb-select colorful-select dropdown-success" %>

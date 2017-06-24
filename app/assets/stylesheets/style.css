@@ -12,6 +12,15 @@ header,
     background-color: transparent;
 }
 
+#my-brand {
+    position: relative;
+    font-size: 25px;
+    line-height: 30px;
+    text-shadow: -3px 0 4px #006;
+    /*-webkit-mask-image: -webkit-gradient(linear, left top,*/
+    /*left bottom, from(rgba(0, 188, 212, 0.7)), to(rgba(3, 169, 244, 0.1)));*/
+}
+
 .top-nav-collapse {
     background-color: #2E2E2E;
 }

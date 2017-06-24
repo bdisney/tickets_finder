@@ -71,6 +71,7 @@ ru:
     registrations:
       destroyed: "До свидания! Ваша учетная запись удалена. Надеемся снова увидеть вас."
       edit:
+        edit_account: 'Редактировать профиль'
         are_you_sure: "Вы уверены?"
         cancel_my_account: "Удалить учетную запись"
         currently_waiting_confirmation_for_email: "Ожидается подтверждение адреса E-mail: %{email}"

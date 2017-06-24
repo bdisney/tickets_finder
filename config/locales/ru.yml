@@ -27,6 +27,8 @@ ru:
       search_result: 'Результаты поиска'
       submit: 'Мне повезет!'
     attributes:
+      from: 'Поедем откуда'
+      to: 'Поедем куда'
       departure_station: 'Станция отправления'
       arrival_station: 'Станция назначения'
       train_number: 'Номер поезда'
