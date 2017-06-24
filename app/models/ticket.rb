@@ -6,6 +6,7 @@ class Ticket < ApplicationRecord
   belongs_to :last_station,  class_name: 'RailwayStation', foreign_key: :last_station_id
 
   after_create  :send_booking_confirmation
+  after_destroy :send_booking_cancellation
 
   validates :passenger_name, :passport_number, presence: true
   validates :passenger_name, length: { in: 3..50 }
@@ -15,5 +16,9 @@ class Ticket < ApplicationRecord
 
   def send_booking_confirmation
     TicketsMailer.booking_confirmation(self).deliver_now
+  end
+
+  def send_booking_cancellation
+    TicketsMailer.booking_cancellation(self).deliver_now
   end
 end
