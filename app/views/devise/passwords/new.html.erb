@@ -10,21 +10,22 @@
   <%= render 'shared/errors_messages' %>
   <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <div class="md-form">
+    <div class="col-md-4 ">
+      <div class="md-form ">
         <%= f.email_field :email, class: 'input-alternate z-depth-5 text-center',
                           autofocus: true,
-                          style: "background-color: white; border-radius: 10px;",
+                          style: "background-color: white; border-radius: 10px; height: 50px;",
                           placeholder: 'Email'%>
       </div>
       <div class="text-center">
-        &nbsp;<button type="submit" class="btn btn-success btn-rounded btn-large waves-effect">
+        <button type="submit" class="btn btn-success btn-rounded btn-large waves-effect">
           <%= t('.send_me_reset_password_instructions') %>
         </button>
+        <br/><br/>
+        <%= link_to t('common.back'), new_user_session_path %>
       </div>
+
     </div>
   </div>
 <% end %>
 
-<br/>
-<%= link_to t('common.back'), new_user_session_path %>
