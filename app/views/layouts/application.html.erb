@@ -49,28 +49,22 @@
           </div>
         </div>
       </nav>
-
-      <!--Mask-->
-      <div class="view hm-black-strong">
-        <div class="full-bg-img">
-          <div class="container">
-
-              <%= render 'shared/flash_notices' %>
-              <%= yield %>
-
-          </div>
-        </div>
-      </div>
-      <!--/.Mask-->
       <!--/.Navbar-->
     </header>
 
-
-    <div class="container">
-      <%= render 'shared/footer' %>
-    </div>
-
-
+    <main>
+      <div class="page-wrap">
+        <div class="container">
+          <%= render 'shared/flash_notices' %>
+          <%= yield %>
+        </div>
+      </div>
+      <div class="site-footer">
+        <div class="container">
+          <%= render 'shared/footer' %>
+        </div>
+      </div>
+    </main>
 
     <!-- SCRIPTS -->
 
