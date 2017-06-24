@@ -14,19 +14,21 @@
     <div class="row">
       <div class="col-md-6">
         <%= f.label :passenger_name %>
-        <%= f.text_field :passenger_name, class: "md-form" %>
+        <%= f.text_field :passenger_name, placeholder: 'ИИМЯ ФАМИЛИЯ',
+                         class: "form-control text-center" %>
       </div>
     </div>
     <br/>
     <div class="row">
       <div class="col-md-6">
         <%= f.label :passport_number %>
-        <%= f.text_field :passport_number, placeholder: 'XXXX XXXXXX', class: "md-form" %>
+        <%= f.text_field :passport_number, placeholder: 'XXXX XXXXXX',
+                         class: "form-control text-center" %>
       </div>
     </div>
 
     <br>
-    <button type="submit" class="btn btn-default">
+    <button type="submit" class="btn btn-outline-success btn-rounded">
       <%= t('.submit', action: ticket.new_record? ? 'Создать' : 'Изменить') %>
     </button>
 <% end %>

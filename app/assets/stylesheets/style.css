@@ -1,15 +1,31 @@
 html,
 body,
-header,
-.view {
+main {
     height: 100%;
 }
 
+body, main {
+    background: url("red_train.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
 
 /* Navigation*/
 
 .navbar {
     background-color: transparent;
+}
+
+#my-brand {
+    position: relative;
+    font-size: 25px;
+    line-height: 30px;
+    text-shadow: -3px 0 4px #006;
+    /*-webkit-mask-image: -webkit-gradient(linear, left top,*/
+    /*left bottom, from(rgba(0, 188, 212, 0.7)), to(rgba(3, 169, 244, 0.1)));*/
 }
 
 .top-nav-collapse {
@@ -23,32 +39,20 @@ header,
 }
 /*Intro*/
 
-.view {
-    padding-top: 0%;
-    background: url("railway4.jpeg")no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
-}
-
 @media (max-width: 768px) {
-    .full-bg-img,
-    .view {
+    main {
         height: auto;
         position: relative;
     }
 }
 
 .description {
-    padding-top: 10%;
-    padding-bottom: 3rem;
+    padding-top: 0%;
+    padding-bottom: 2rem;
     color: #fff
 }
 
 #transparent {
-    z-index: 3;
     background: rgba(0, 188, 212, 0.5) ;
     padding: 10px 0 3px 0 ;
     position:relative;
@@ -58,8 +62,12 @@ header,
     border: black 1px solid;
 }
 
-.login-form, .registration-form {
-    padding-top: 20%;
+.search-card {
+    background: rgba(0, 188, 212, 0.5);
+    padding: 10px 0 3px 0 ;
+    border-radius: 40px;
+    border: black 1px solid;
+
 }
 
 .dropdown-content {
@@ -74,18 +82,6 @@ header,
     color: white;
 }
 
-.footer {
-    padding-bottom: 0%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    background-color: transparent;
-    text-align: center;
-    padding-bottom: 0%;
-    margin-bottom: 0;
-}
 
 #ticket_passenger_name, #ticket_passport_number {
     border-radius: 10px;
@@ -100,4 +96,22 @@ input:-webkit-autofill {
 input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 50px white  inset;
     -webkit-text-fill-color: #333;
+}
+
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: 5px;
+}
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+.site-footer, .page-wrap:after {
+    height: 20px;
+    position: relative;
+
+}
+.site-footer {
+    background: none;
 }

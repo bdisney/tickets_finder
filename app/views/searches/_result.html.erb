@@ -1,6 +1,6 @@
 <% if @trains.present? %>
     <div class="" id="test">
-      <div class="description">
+      <div class="description" style="padding-top: 5%;">
         <h2 class="h2-responsive wow fadeInUpBig">
           <p class="text-white"><%= t('search.show.search_result') %>:</p>
         </h2>
@@ -9,9 +9,9 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
 
-          <div class="card wow fadeInRight z-depth-5" id="transparent">
+          <div class="card wow fadeInRight z-depth-5 search-card" id="">
             <div class="card-block wow fadeIn">
-              <table class="table table-sm text-white text-center" id="non-bordered-th">
+              <table class="table table-sm  text-center" id="non-bordered-th">
                 <thead >
                 <th class="text-center"><%= t('search.attributes.train_number') %></th>
                 <th class="text-center"><%= t('search.attributes.route') %></th>
