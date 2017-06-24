@@ -1,0 +1,40 @@
+<h2><%= t('.greeting', recipient: @user.full_name) %></h2>
+
+<p><%= t('.thank_you') %></p>
+
+<h3><%= t('.order_details') %></h3>
+
+<p><%= t('tickets.show.ticket_created_at') %>: <%= @ticket.created_at.strftime '%d.%m.%Y, %H:%M' %></p>
+
+<h4><%= t('.ticket_details') %>:</h4>
+
+<ul>
+  <li>
+    <strong><%= t('activerecord.models.train') %></strong>: <%= @ticket.train.number %>
+  </li>
+
+  <li>
+    <strong><%= t('tickets.attributes.route') %></strong>: <%= @ticket.train.route.title %>
+  </li>
+  <li>
+    <strong><%= t('tickets.attributes.departure_station') %></strong>: <%= @ticket.start_station.title %>
+    (<%= @ticket.start_station.check_station_attr(@ticket.train.route, :departure_time) %>)
+  </li>
+  <li>
+    <strong><%= t('tickets.attributes.arrival_station') %></strong>: <%= @ticket.last_station.title %>
+    (<%= @ticket.last_station.check_station_attr(@ticket.train.route, :arrival_time) %>)
+  </li>
+</ul>
+
+<h4><%= t('tickets.show.passenger_details') %></h4>
+
+<ul>
+  <li>
+    <strong><%= t('tickets.show.passenger_name') %></strong>: <%= @ticket.passenger_name %>
+  </li>
+  <li>
+    <strong><%= t('tickets.show.passport_number') %></strong>: <%= @ticket.passport_number %>
+  </li>
+</ul>
+
+<p><%= link_to t('.view'), @ticket %> | <%= link_to t('.view_all'), tickets_url %></p>
