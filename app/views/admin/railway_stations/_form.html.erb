@@ -1,4 +1,6 @@
-<%= form_for [:admin, railway_station] do |f| %>
+<% hidden = false unless local_assigns[:hidden] %>
+
+<%= form_for [:admin, railway_station], html: { style: "display: #{ hidden ? 'none' : 'block' }" } do |f| %>
     <%= render 'shared/errors_messages', resource: railway_station %>
     <div class="row">
       <div class="col-md-6">
@@ -10,6 +12,6 @@
     <br>
 
     <button type="submit" class="btn btn-default">
-      <%= t('.submit', action: @railway_station.new_record? ? 'Создать' : 'Изменить') %>
+      <%= t('.submit', action: railway_station.new_record? ? 'Создать' : 'Изменить') %>
     </button>
 <% end %>
