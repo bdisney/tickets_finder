@@ -1,8 +1,21 @@
 <tr>
-  <td><%= railway_station.title %></td>
-  <%= render 'shared/actions', links: {
-      show:   admin_railway_station_path(railway_station),
-      edit:   edit_admin_railway_station_path(railway_station),
-      delete: admin_railway_station_path(railway_station)
-  } %>
+  <td>
+    <div id="railway_station_title_<%= railway_station.id %>">
+      <%= railway_station.title %>
+    </div>
+    <%= render 'form', railway_station: railway_station, hidden: true %>
+  </td>
+
+  <td class=" text-right">
+    <%= link_to admin_railway_station_path(railway_station) do %>
+        <i class="fa fa-eye"></i>&nbsp;
+    <% end %>
+    <%= link_to '', class: 'edit_station', data: { station_id: railway_station.id } do %>
+        <span class="text-success"><i class="fa fa-pencil"></i></span>&nbsp;
+    <% end %>
+    <%= link_to admin_railway_station_path(railway_station), method: :delete,
+                data: { confirm: 'Are you sure?' } do %>
+        <span class="text-danger"><i class="fa fa-times"></i></span>
+    <% end %>
+  </td>
 </tr>

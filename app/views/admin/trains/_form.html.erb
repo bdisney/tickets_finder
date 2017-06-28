@@ -1,4 +1,6 @@
-<%= form_for [:admin, train] do |f| %>
+<% hidden = false unless local_assigns[:hidden] %>
+
+<%= form_for [:admin, train], html: { style: "display: #{ hidden ? 'none' : 'block' }" } do |f| %>
   <%= render 'shared/errors_messages', resource: train %>
   <div class="card">
     <div class="card-block">
@@ -22,15 +24,20 @@
         </div>
       </div>
       <br />
-      <div class="checkbox">
-        <%= f.check_box :order_from_end%>
-        <%= f.label :order_from_end, t('.order_from_end') %>
 
+      <%= t('.order_from_end') %>:
+      <div class="switch">
+        <label>
+          <%= t('.from_head') %>
+          <%= f.check_box :order_from_end %>
+          <span class="lever"></span>
+          <%= t('.from_end') %>
+        </label>
       </div>
       <br/>
       <div class="actions">
         <button type="submit" class="btn btn-default">
-          <%= t('.submit', action: @train.new_record? ? 'Создать' : 'Изменить') %>
+          <%= t('.submit', action: train.new_record? ? 'Создать' : 'Изменить') %>
         </button>
       </div>
     </div>
