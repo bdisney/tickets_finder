@@ -128,7 +128,9 @@ ru:
         notice: 'Поезд удален'
       form:
         route: 'Маршрут'
-        order_from_end: 'Нумерация вагонов с хвоста'
+        order_from_end: 'Нумерация вагонов с'
+        from_head: 'головы'
+        from_end: 'конца'
         submit: '%{action}'
       attributes:
         number: 'номер'
