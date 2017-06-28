@@ -1,7 +1,7 @@
 <% if @trains.present? %>
   $('#search_result').html('<%= j render('result') %>');
 <% else %>
-  toastr.warning('Холи-гуакомоле! Попробуйте изменить условия поиска.')
+  toastr.info('Поездов на заданном маршруте нет.')
 <% end %>
 
 
