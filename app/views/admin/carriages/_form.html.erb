@@ -5,50 +5,46 @@
       <div class="col-md-6">
         <%= f.label :train, t('admin.carriages.attributes.train'), class: "text-muted" %>
         <%= f.collection_select :train_id, Train.all, :id, :number, {},
-                                class: "form-control" %>
+                                class: "mdb-select colorful-select dropdown-dark" %>
       </div>
 
       <div class="col-md-6">
         <%= f.label :varriation, t('admin.carriages.attributes.carriage_type'), class: "text-muted" %><br>
         <%= f.select :type, Carriage::TYPES.map { |type| [ type[1], type[0] ] }, {},
-                     class: "form-control" %>
+                     class: "mdb-select colorful-select dropdown-dark" %>
       </div>
     </div>
     <br />
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 hidden_carriage CoupeCarriage EconomyCarriage">
         <%= f.label :top_seats, t('admin.carriages.attributes.top_seats'), class: "text-muted" %>
         <%= f.text_field :top_seats, class: "form-control" %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 hidden_carriage CoupeCarriage EconomyCarriage BusinessCarriage">
         <%= f.label :bottom_seats, t('admin.carriages.attributes.bottom_seats'), class: "text-muted" %>
         <%= f.text_field :bottom_seats, class: "form-control" %>
       </div>
     </div>
-    <br />
-
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 hidden_carriage EconomyCarriage">
         <%= f.label :side_top_seats, t('admin.carriages.attributes.side_top_seats'), class: "text-muted" %>
         <%= f.text_field :side_top_seats, class: "form-control" %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 hidden_carriage EconomyCarriage">
         <%= f.label :side_bottom_seats, t('admin.carriages.attributes.side_bottom_seats'), class: "text-muted" %>
         <%= f.text_field :side_bottom_seats, class: "form-control" %>
       </div>
     </div>
-    <br />
-
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 hidden_carriage SittingCarriage">
         <%= f.label :seats, t('admin.carriages.attributes.seats'), class: "text-muted" %>
         <%= f.text_field :seats, class: "form-control" %>
       </div>
     </div>
-
     <br />
     <div class="actions">
-      <%= f.submit t('.submit', action: carriage.new_record? ? 'Создать' : 'Изменить'),
-                   class: "btn btn-default" %>
+        <button type="submit" class="btn btn-default">
+                  <%= t('.submit', action: carriage.new_record? ? 'Создать' : 'Изменить') %>
+        </button>
     </div>
 <% end %>
