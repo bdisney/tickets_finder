@@ -1,8 +1,20 @@
 <tr>
-  <td><%= train.number %></td>
-  <%= render 'shared/actions', links: {
-      show:   admin_train_path(train),
-      edit:   edit_admin_train_path(train),
-      delete: admin_train_path(train)
-  } %>
+  <td>
+    <div id="train_number_<%= train.id %>">
+      <%= train.number %>
+    </div>
+    <%= render 'form', train: train, hidden: true %>
+  </td>
+  <td class="text-right align-center">
+    <%= link_to admin_train_path(train) do %>
+      <i class="fa fa-eye"></i>&nbsp;
+    <% end %>
+    <%= link_to '', class: 'edit_train', data: { train_id: train.id } do %>
+        <span class="text-success"><i class="fa fa-pencil"></i></span>&nbsp;
+    <% end %>
+    <%= link_to admin_train_path(train), method: :delete,
+                data: { confirm: 'Are you sure?' } do %>
+        <span class="text-danger"><i class="fa fa-times"></i></span>
+    <% end %>
+  </td>
 </tr>
